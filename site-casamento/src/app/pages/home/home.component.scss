@@ -1,0 +1,89 @@
+:root {
+  --olive: #556b2f;
+  --cream: #fdf6ec;
+}
+
+.home {
+  min-height: 75vh;
+  background: var(--cream) url('/assets/arthur-teste.png') no-repeat center center / cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  &__content {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--olive);
+    margin-bottom: 1rem;
+  }
+
+  &__quote {
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: #444;
+    margin-bottom: 1rem;
+  }
+
+  &__date {
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--olive);
+    margin-bottom: 2rem;
+  }
+
+  &__cta {
+    background-color: var(--olive);
+    color: var(--cream);
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+
+    &:hover {
+      background-color: #445722;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  @media (max-width: 600px) {
+    &__cta {
+      font-size: 0.95rem;
+      padding: 0.6rem 1.2rem;
+    }
+  }
+
+  .home__date-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--olive);
+    max-width: 150px;
+    margin-bottom: 25px;
+  }
+
+  .home__date {
+    padding: 0 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--olive);
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+}

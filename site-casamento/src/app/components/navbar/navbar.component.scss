@@ -7,11 +7,11 @@
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 
     &__container {
-        padding: 0rem 7rem 0rem 7rem;
+        padding: 0rem 4rem 0rem 4rem;
         margin: 0 auto;
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.25rem;
     }
 
     &__brand {
@@ -32,7 +32,7 @@
     &__links {
         list-style: none;
         display: flex;
-        gap: 2.5rem;
+        gap: 2rem;
         justify-content: end;
 
         li a {
