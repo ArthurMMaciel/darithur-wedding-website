@@ -1,0 +1,21 @@
+<nav class="navbar">
+    <div class="navbar__container">
+        <a class="navbar__brand" href="#">Arthur & Dari</a>
+
+        <ul [class.active]="menuOpen" class="navbar__links">
+            <li><a> | </a></li>
+            <li><a href="#home" (click)="closeMenu()"> Principal </a></li>
+            <li><a> | </a></li>
+            <li><a href="#gallery" (click)="closeMenu()">Galeria</a></li>
+            <li><a> | </a></li>
+            <li><a href="#rsvp" (click)="closeMenu()">Confirmar de presença</a></li>
+            <li><a> | </a></li>
+            <li><a href="#gifts" (click)="closeMenu()">Presentes</a></li>
+            <li><a> | </a></li>
+            <li><a href="#location" (click)="closeMenu()">Local</a></li>
+            <li><a> | </a></li>
+            <li><a href="#countdown" (click)="closeMenu()">Contagem regressiva</a></li>
+            <li><a> | </a></li>
+        </ul>
+    </div>
+</nav>

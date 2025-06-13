@@ -1,0 +1,25 @@
+:root {
+    --olive: #556b2f;
+    --cream: #fdf6ec;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--font-color);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--olive);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
