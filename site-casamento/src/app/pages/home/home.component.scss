@@ -5,12 +5,12 @@
 
 .home {
   min-height: 75vh;
-  background: var(--cream) url('/assets/arthur-teste.png') no-repeat center center / cover;
+  background-image: url('/assets/images/arthur-dari-06.jpg');
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  
+
   &__content {
     width: 100%;
   }
@@ -24,8 +24,15 @@
   &__quote {
     font-style: italic;
     font-size: clamp(1rem, 2.5vw, 1.25rem);
-    color: #444;
+    color: #292929;
     margin-bottom: 1rem;
+  }
+
+  &__brand {
+    font-size: 4rem;
+    color: var(--olive);
+    margin-bottom: 2rem;
+    text-decoration: none;
   }
 
   &__date {
@@ -61,29 +68,28 @@
   }
 
   .home__date-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1.5rem 0;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+    width: 100%;
 
-  &::before,
-  &::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background-color: var(--olive);
-    max-width: 150px;
-    margin-bottom: 25px;
-  }
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: var(--olive);
+      max-width: 200px;
+      margin-bottom: 28px;
+    }
 
-  .home__date {
-    padding: 0 1rem;
-    font-weight: bold;
-    font-size: 1rem;
-    color: var(--olive);
-    white-space: nowrap;
-    text-align: center;
+    .home__date {
+      padding: 0 1rem;
+      font-size: 1.3rem;
+      color: var(--olive);
+      white-space: nowrap;
+      text-align: center;
+    }
   }
-}
 }

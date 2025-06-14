@@ -1,1 +1,10 @@
-<p>countdown works!</p>
+<section id="countdown" class="countdown-section">
+  <a class="countdown-title">Contagem Regressiva</a>
+  <div class="countdown">
+    <div class="countdown-box" *ngFor="let unit of ['days', 'hours', 'minutes', 'seconds']">
+      <div class="flip-card" [class.flip]="flip[unit]">
+        <span class="number">{{ this[unit] }}</span>
+      </div>
+    </div>
+  </div>
+</section>

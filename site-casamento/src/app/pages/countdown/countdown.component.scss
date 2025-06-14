@@ -1,0 +1,62 @@
+:root {
+  --olive: #556b2f;
+  --cream: #fdf6e3;
+}
+
+.countdown-section {
+  background: var(--cream);
+  text-align: center;
+  padding: 4rem 1rem;
+
+  .countdown-title {
+    font-size: 3.5rem;
+    color: var(--olive);
+    text-decoration: none;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    margin-top: 25px;
+  }
+
+  .countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flip-card {
+    background: var(--olive);
+    color: var(--cream);
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 2.5rem;
+    width: 70px;
+    height: 90px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  .flip-card.flip {
+    animation: flipAnimation 0.6s ease-in-out;
+  }
+
+  @keyframes flip {
+    0% {
+      transform: rotateX(0);
+    }
+    100% {
+      transform: rotateX(180deg);
+    }
+  }
+}
+
