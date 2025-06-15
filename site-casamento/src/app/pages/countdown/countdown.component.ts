@@ -12,13 +12,6 @@ export class CountdownComponent implements OnInit, OnDestroy {
   minutes = '00';
   seconds = '00';
 
-  flip = {
-    days: false,
-    hours: false,
-    minutes: false,
-    seconds: false
-  };
-
   private intervalId: any;
 
   ngOnInit() {
@@ -55,15 +48,5 @@ export class CountdownComponent implements OnInit, OnDestroy {
 
   pad(value: number): string {
     return value < 10 ? '0' + value : value.toString();
-  }
-
-  triggerFlip(unit: 'days' | 'hours' | 'minutes' | 'seconds', newValue: string) {
-    if (this[unit] !== newValue) {
-      this.flip[unit] = false;
-      setTimeout(() => {
-        this[unit] = newValue;
-        this.flip[unit] = true;
-      }, 10); // força o reflow da animação
-    }
   }
 }

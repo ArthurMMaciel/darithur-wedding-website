@@ -4,7 +4,6 @@
     <button class="gallery__arrow left" (click)="prevSlide()">&#10094;</button>
     
     <div class="gallery__carousel" [style.transform]="getTransform()">
-      <img *ngFor="let photo of photos" [src]="photo" alt="Foto do casal" />
     </div>
 
     <button class="gallery__arrow right" (click)="nextSlide()">&#10095;</button>
