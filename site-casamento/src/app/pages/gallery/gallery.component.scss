@@ -1,12 +1,12 @@
 .gallery {
-  background-color: var(--cream);
+  background-color: var(--olive);
   padding: 4rem 1rem;
   text-align: center;
-  min-height: 75vh;
+  min-height: 55vh;
 
   &__title {
     font-size: 3.5rem;
-    color: var(--olive);
+    color: var(--golden);
     margin-bottom: 2rem;
     text-decoration: none;
   }
@@ -16,7 +16,6 @@
     overflow: hidden;
     max-width: 90%;
     margin: 0 auto;
-    border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 

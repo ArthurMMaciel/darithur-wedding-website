@@ -1,23 +1,25 @@
 <section id="rsvp" class="rsvp-section">
+  <a class="rsvp-title">Confirmar presença</a>
   <div class="rsvp-container">
     <form class="rsvp-form">
       <div class="form-group">
         <label for="guestName">Nome* (obrigatório)</label>
-        <select
-            [(ngModel)]="selectedGuest"
-            (ngModelChange)="onGuestSelect()"
-            [ngModelOptions]="{ standalone: true }"
-            class="select-input"
-            [disabled]="guestList.length === 0">
-            <option *ngFor="let guest of guestList" [ngValue]="guest">
-                {{ guest.name }}
-            </option>
+        <select [(ngModel)]="selectedGuest"
+                (ngModelChange)="onGuestSelect()"
+                [ngModelOptions]="{ standalone: true }"
+                class="select-input"
+                [disabled]="guestList.length === 0"
+                style="margin-top: 2px;">
+                <option value="" selected>Nenhum convidado</option>
+                <option *ngFor="let guest of guestList" [ngValue]="guest">
+                    {{ guest.name }}
+                </option>
         </select>
       </div>
 
       <div class="form-group">
-        <label for="phone">Telefone* (obrigatório)</label>
-        <input style="background-color: var(--cream);" 
+        <label for="phone" style="margin-top: 5px;">Telefone* (obrigatório)</label>
+        <input style="background-color: var(--cream); margin-top: 2px; border: 1px solid var(--terracotta);" 
                type="tel" 
                id="phone" 
                name="phone" 
@@ -27,8 +29,8 @@
       </div>
 
       <div class="form-group">
-        <label for="email">Email* (obrigatório)</label>
-        <input style="background-color: var(--cream);" 
+        <label for="email" style="margin-top: 5px;">Email* (obrigatório)</label>
+        <input style="background-color: var(--cream); margin-top: 2px; border: 1px solid var(--terracotta);" 
                type="email" 
                id="email" 
                name="email" 
@@ -36,26 +38,26 @@
                placeholder="Digite seu email"
                required />
       </div>
+
+      <button class="rsvp-button" 
+              [disabled]="!selectedGuest || !phone || !email"
+              style="margin-top: 20px;">
+        Confirmar Presença
+      </button>
     </form>
-    
     
     <div *ngIf="selectedGuest && selectedGuest.companions.length > 0" class="companions-box">
         <a class="companion-title">Acompanhantes</a>
         <div *ngFor="let companion of selectedGuest.companions" class="companion-form">
             <p>{{ companion.name }}</p>
             <label>
-                <input type="radio" [name]="'companion-' + companion.id" [(ngModel)]="companion.response" [value]="'yes'" /> Irá
+                <input type="radio" [name]="'companion-' + companion.id" [(ngModel)]="companion.response" [value]="'yes'"/> Presença confirmada
             </label>
             <label>
-                <input type="radio" [name]="'companion-' + companion.id" [(ngModel)]="companion.response" [value]="'no'" /> Não irá
+                <input type="radio" [name]="'companion-' + companion.id" [(ngModel)]="companion.response" [value]="'no'"/> Presença não confirmada
             </label>
         </div>
     </div>
-    
-    <button class="rsvp-button" [disabled]="!selectedGuest || !phone || !email">
-      Confirmar Presença
-    </button>
-    
-    <p class="rsvp-footer-text">Caso seu nome não esteja nas opções, você já foi confirmado por alguém!</p>
   </div>
+  <p class="rsvp-footer-text">Caso seu nome não esteja nas opções, você já foi confirmado por alguém!</p>
 </section>

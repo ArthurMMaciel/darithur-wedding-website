@@ -5,10 +5,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { CountdownComponent } from './pages/countdown/countdown.component';
 import { RsvpComponent } from './pages/rsvp/rsvp.component';
+import { LocationComponent } from './pages/location/location.component';
+import { HomageComponent } from './pages/homage/homage.component';
+import { RecommendationsComponent } from './pages/recommendations/recommendations.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, HomeComponent, GalleryComponent, CountdownComponent, RsvpComponent],
+  imports: [RouterOutlet, NavbarComponent, HomeComponent, GalleryComponent, CountdownComponent, RsvpComponent, LocationComponent, HomageComponent, RecommendationsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

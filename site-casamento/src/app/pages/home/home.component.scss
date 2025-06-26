@@ -1,71 +1,33 @@
-:root {
-  --olive: #556b2f;
-  --cream: #fdf6ec;
-}
-
 .home {
-  min-height: 75vh;
-  background-image: url('/assets/images/arthur-dari-06.jpg');
+  min-height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-image: url('/assets/images/home/arthur-dari-home-background.jpg');
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: darken; 
+  background-position: center 40%;
+  background-repeat: no-repeat;
 
   &__content {
     width: 100%;
   }
-
-  h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    color: var(--olive);
-    margin-bottom: 1rem;
+  
+  &__brand {
+    font-size: 4rem;
+    color: var(--wood-brown);
+    text-decoration: none;
   }
 
   &__quote {
     font-style: italic;
     font-size: clamp(1rem, 2.5vw, 1.25rem);
-    color: #292929;
+    color: var(--wood-brown);
     margin-bottom: 1rem;
   }
 
-  &__brand {
-    font-size: 4rem;
-    color: var(--olive);
-    margin-bottom: 2rem;
-    text-decoration: none;
-  }
-
-  &__date {
-    font-weight: bold;
-    font-size: 1rem;
-    color: var(--olive);
-    margin-bottom: 2rem;
-  }
-
-  &__cta {
-    background-color: var(--olive);
-    color: var(--cream);
-    padding: 0.75rem 1.5rem;
-    border-radius: 2rem;
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-
-    &:hover {
-      background-color: #445722;
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-  }
-
-  @media (max-width: 600px) {
-    &__cta {
-      font-size: 0.95rem;
-      padding: 0.6rem 1.2rem;
-    }
-  }
 
   .home__date-wrapper {
     display: flex;
@@ -74,22 +36,22 @@
     margin: 1.5rem 0;
     width: 100%;
 
+    .home__date {
+      padding: 0 1rem;
+      font-size: 1.3rem;
+      color: var(--wood-brown);
+      white-space: nowrap;
+      text-align: center;
+    }
+
     &::before,
     &::after {
       content: "";
       flex: 1;
       height: 1px;
-      background-color: var(--olive);
+      background-color: var(--wood-brown);
       max-width: 200px;
-      margin-bottom: 28px;
     }
 
-    .home__date {
-      padding: 0 1rem;
-      font-size: 1.3rem;
-      color: var(--olive);
-      white-space: nowrap;
-      text-align: center;
-    }
   }
 }

@@ -30,11 +30,13 @@ export class RsvpComponent {
 
   public onGuestSelect() {
     if (this.selectedGuest) {
-      this.phone = this.selectedGuest.companions.length > 0 ? this.selectedGuest.companions[0].name : '';
-      this.email = ''; 
-    } else {
       this.phone = '';
       this.email = '';
     }
+  }
+
+  public submitRSVP() {
+    console.log("oi");
+    
   }
 }

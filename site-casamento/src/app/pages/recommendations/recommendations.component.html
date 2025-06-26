@@ -1,0 +1,16 @@
+<section id="recommendation" class="recommendation-section">
+    <a class="recommendation-title">Recomendações</a>
+
+    <div class="recommendation-tabs">
+        <button (click)="selectGender('male')" [class.active]="selectedGender === 'male'">Masculino</button>
+        <button (click)="selectGender('female')" [class.active]="selectedGender === 'female'">Feminino</button>
+    </div>
+
+    <div class="recommendation-content">
+        <img [src]="recommendationImage" class="recommendation-image"/>
+    </div>
+
+    <p class="recommendation-description">
+        {{ genders[selectedGender].description }}
+    </p>
+</section>

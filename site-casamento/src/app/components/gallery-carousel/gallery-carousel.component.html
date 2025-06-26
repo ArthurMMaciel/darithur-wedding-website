@@ -1,0 +1,21 @@
+<div class="gallery-carousel">
+    <div class="gallery-carousel__images">
+        <img *ngFor="let image of visibleImages" [src]="image" class="gallery-carousel__image" />
+    </div>
+
+    <div class="gallery-carousel__pagination">
+        <button (click)="prevPage()" [hidden]="currentPage === 0">
+            ◀
+        </button>
+        <button (click)="nextPage()" [hidden]="currentPage === totalPages - 1">
+            ▶
+        </button>
+
+        <div class="test">
+            <select id="photosPerPage" [(ngModel)]="photosPerPage" (change)="onPhotosPerPageChange()">
+                <option *ngFor="let option of photosPerPageOptions" [value]="option">{{ option }}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>

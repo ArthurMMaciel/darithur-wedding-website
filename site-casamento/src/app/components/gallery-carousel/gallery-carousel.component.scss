@@ -1,0 +1,62 @@
+.gallery-carousel {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  &__controls {
+    margin-bottom: 1rem;
+  }
+
+  &__images {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  &__image {
+    max-width: 450px;
+    max-height: 280px;
+    min-width: 350px;
+    min-height: 280px;
+    object-fit: cover;
+    border: 1px solid var(--golden);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+
+    button {
+      padding: 0.3rem 0.8rem;
+      background-color: var(--golden);
+      color: var(--olive);
+      border: 1px solid var(--golden);
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  select {
+    border: 1px solid var(--golden);
+    border-radius: 5px;
+    display: flex;
+    width: 5rem;
+    padding: 0.3rem;
+    color: var(--olive);
+    background-color: var(--golden);
+    font-weight: bold;
+    width: 3rem;
+  }
+}
+

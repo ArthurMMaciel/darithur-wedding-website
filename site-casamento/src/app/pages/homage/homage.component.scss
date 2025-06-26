@@ -1,0 +1,54 @@
+.homage {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 3.5rem;
+
+  &__content {
+    width: 100%;
+  }
+
+  &__brand {
+    font-size: 3.5rem;
+    color: var(--olive);
+    text-decoration: none;
+  }
+
+  &__quote {
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--golden);
+  }
+
+}
+
+.homage-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.vanilda-image-container {
+  width: 550px;
+  height: 500px;
+  background-image: url('/assets/images/homage/vanilda.jpeg');
+  background-size: cover;
+  background-position: center 20%;
+  border-radius: 5px;
+  border: 2px solid var(--golden);
+}
+
+.elma-image-container {
+  width: 550px;
+  height: 500px;
+  background-image: url('/assets/images/homage/vanilda.jpeg');
+  background-size: cover;
+  background-position: center 20%;
+  border-radius: 5px;
+  border: 2px solid var(--golden);
+}
