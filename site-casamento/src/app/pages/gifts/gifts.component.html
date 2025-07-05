@@ -1,1 +1,32 @@
-<p>gifts works!</p>
+<section id="gifts" class="gifts-section">
+  <a class="gifts-title">Presentes</a>
+
+  <div class="tabs">
+    <button (click)="activeTab = 'custom'" [class.active]="activeTab === 'custom'">Personalizados</button>
+    <button (click)="activeTab = 'standard'" [class.active]="activeTab === 'standard'">Padrões</button>
+  </div>
+
+  <div *ngIf="activeTab === 'custom'" class="gift-grid">
+    <div class="gift-card" *ngFor="let gift of personalizedGifts">
+      <img [src]="gift.image"/>
+      <h3>{{ gift.name }}</h3>
+      <p class="description">{{ gift.description }}</p>
+      <p class="value">R$ {{ gift.value }},00</p>
+      <button (click)="openPaymentModal()">Comprar</button>
+    </div>
+    <ng-container *ngIf="showPaymentModal">
+      <app-payment-modal
+        [paymentRandomKey]="paymentRandomKey"
+        (closed)="closePaymentModal()"
+      ></app-payment-modal>
+    </ng-container>
+  </div>
+
+  <div *ngIf="activeTab === 'standard'" class="gift-standard">
+    <div class="gift-card" *ngFor="let gift of standardGifts">
+      <img [src]="gift.image"/>
+      <p class="description">{{ gift.description }}</p>
+      <button style="margin-top: 15px;" (click)="redirectToSite(gift.url)">Comprar</button>
+    </div>
+  </div>
+</section>

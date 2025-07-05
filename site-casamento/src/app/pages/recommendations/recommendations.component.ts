@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-recommendations',
   imports: [],
+  standalone: true,
   templateUrl: './recommendations.component.html',
   styleUrl: './recommendations.component.scss'
 })
@@ -12,10 +13,10 @@ export class RecommendationsComponent {
 
   genders = {
     male: {
-      description: 'Sugerimos traje social completo para os homens. O ideal é usar terno em cores sóbrias (azul-marinho ou preto), camisa clara e gravata. Sapatos sociais escuros e bem engraxados completam o visual. Caso prefira um estilo menos formal, calça social com blazer e sapato social também são muito bem-vindos.'
+      description: 'Sugerimos traje social esporte fino para os homens. Sapatos sociais bem engraxados completam o visual.'
     },
     female: {
-      description: 'Para as mulheres, sugerimos vestidos longos ou midi em tecidos leves e elegantes, que tragam conforto e sofisticação. Cores escuras, estampas delicadas e detalhes como renda, babados ou bordados são sempre um toque especial. Sandálias ou sapatos de salto médio a alto e uma bolsa de mão complementam o look.'
+      description: 'Para as mulheres, sugerimos vestidos longos ou midi. Sandálias ou sapatos de salto médio a alto pois o casamento acontece em salão e uma bolsa de mão complementam o look.'
     }
   };
 

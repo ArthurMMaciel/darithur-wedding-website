@@ -4,6 +4,7 @@ import { GalleryCarouselComponent } from '../../components/gallery-carousel/gall
 @Component({
   selector: 'app-gallery',
   imports: [GalleryCarouselComponent],
+  standalone: true,
   templateUrl: './gallery.component.html',
   styleUrl: './gallery.component.scss'
 })

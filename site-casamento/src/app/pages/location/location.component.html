@@ -10,7 +10,7 @@
         <div id="map" class="map-container"></div>
     </div>
 
-    <p class="location-address">
+    <a class="location-address" href="{{ locations[selectedLocation].maps }}" target="_blank" rel="noopener noreferrer">
         {{ locations[selectedLocation].address }}
-    </p>
+    </a>
 </section>

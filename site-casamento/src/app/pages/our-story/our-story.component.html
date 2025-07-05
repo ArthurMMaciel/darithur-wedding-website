@@ -1,0 +1,16 @@
+<section id="our-story" class="story-section">
+  <a class="story-title">Nossa História</a>
+  <div class="film-strip">
+    <div class="photo-column left">
+      <img *ngFor="let img of leftImages" [src]="img"/>
+    </div>
+    <div class="story-content">
+      <p class="story-text">
+        {{storyText}}
+      </p>
+    </div>
+    <div class="photo-column right">
+      <img *ngFor="let img of rightImages" [src]="img"/>
+    </div>
+  </div>
+</section>

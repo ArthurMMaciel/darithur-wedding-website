@@ -1,0 +1,23 @@
+<div class="modal-overlay">
+  <div class="payment-modal">
+    <button class="close-btn" (click)="close.emit()">
+      <i-lucide-x color="var(--cream)" size="20"></i-lucide-x>
+    </button>
+
+    <img src="assets/images/payment/qrCode.jpeg" alt="QR Code" class="qr-image" />
+
+    <p class="modal-heading">Nos ajude com um valor do seu ❤️. Obrigado!</p>
+
+    <div class="key-wrapper">
+      <input
+        class="pix-key"
+        type="text"
+        [value]="paymentRandomKey"
+        readonly
+      />
+      <button class="copy-btn" (click)="copyKey()" title="Copiar">
+        <i-lucide-copy color="var(--golden)" size="18"></i-lucide-copy>
+      </button>
+    </div>
+  </div>
+</div>

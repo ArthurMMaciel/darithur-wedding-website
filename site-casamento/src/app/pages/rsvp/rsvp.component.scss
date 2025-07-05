@@ -29,7 +29,7 @@
   flex-direction: column;
   gap: 0.5rem;
   border-radius: 5px;
-  border: 1px solid var(--terracotta);
+  border: 1px solid var(--golden);
 
   input {
     color: var(--olive);
@@ -100,7 +100,7 @@ input:focus {
 
 .select-input {
   padding: 0.5rem;
-  border: 1px solid var(--terracotta);
+  border: 1px solid var(--golden);
   border-radius: 5px;
   font-size: 1rem;
   background-color: var(--cream);
@@ -111,7 +111,7 @@ input:focus {
   background-color: var(--cream);
   color: var(--olive);
   padding: 0.5rem;
-  border: 1px solid var(--terracotta);
+  border: 1px solid var(--golden);
   border-radius: 5px;
   font-weight: bold;
   font-size: 1rem;

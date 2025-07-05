@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-rsvp',
   imports: [FormsModule, CommonModule],
+  standalone: true,
   templateUrl: './rsvp.component.html',
   styleUrl: './rsvp.component.scss'
 })

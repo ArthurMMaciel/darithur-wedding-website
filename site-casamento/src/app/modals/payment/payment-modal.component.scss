@@ -1,0 +1,71 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--olive);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 350px;
+  position: relative;
+  text-align: center;
+  color: var(--cream);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-heading {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--golden);
+}
+
+.qr-code {
+  width: 200px;
+  border: 1px solid var(--golden);
+}
+
+.qr-note {
+  font-size: 0.85rem;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.key-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.payment-key {
+  background-color: var(--cream);
+  color: var(--olive);
+  border: 1px solid var(--golden);
+  padding: 0.5rem;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.copy-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

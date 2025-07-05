@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-background',
   imports: [],
+  standalone: true,
   templateUrl: './background.component.html',
   styleUrl: './background.component.scss'
 })
