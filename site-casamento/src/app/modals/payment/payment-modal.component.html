@@ -1,7 +1,7 @@
 <div class="modal-overlay">
-  <div class="payment-modal">
-    <button class="close-btn" (click)="close.emit()">
-      <i-lucide-x color="var(--cream)" size="20"></i-lucide-x>
+  <div class="modal-content">
+    <button class="close-btn" (click)="closed.emit()">
+      <i class="fas fa-times fa-lg" style="cursor: pointer; color: var(--cream);"></i>
     </button>
 
     <img src="assets/images/payment/qrCode.jpeg" alt="QR Code" class="qr-image" />
@@ -16,8 +16,9 @@
         readonly
       />
       <button class="copy-btn" (click)="copyKey()" title="Copiar">
-        <i-lucide-copy color="var(--golden)" size="18"></i-lucide-copy>
+        <i class="fas fa-copy fa-lg" style="cursor: pointer; color: var(--golden);"></i>
       </button>
+      <app-toast [message]="'Chave para pagamento personalizado copiada com sucesso!'" [visible]="showToast"></app-toast>
     </div>
   </div>
 </div>

@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,4 +68,19 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.pix-key{
+  height: 20px;
+  border: 1px solid var(--golden);
+  border-radius: 5px;
+  font-weight: bold;
+  color: var(--olive);
+  background-color: var(--cream);
+}
+
+.key-wrapper{
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
