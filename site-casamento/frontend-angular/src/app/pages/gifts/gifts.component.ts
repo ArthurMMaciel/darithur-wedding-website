@@ -11,7 +11,7 @@ import { PaymentModalComponent } from '../../modals/payment/payment-modal.compon
 export class GiftsComponent {
   activeTab: string = 'standard';
   public showPaymentModal = false;
-  public paymentRandomKey = 'b81f4eb2-f199-4f6c-8118-f7a9125d53fc';
+  public paymentRandomKey = '985d0270-473f-4d8b-89aa-06101b37d779';
 
   personalizedGifts = [
     {

@@ -18,10 +18,8 @@ export class PaymentModalComponent {
   public copyKey(): void {
     navigator.clipboard.writeText(this.paymentRandomKey)
     this.showToast = true;
-    console.log(this.showToast);
     setTimeout(() => {
       this.showToast = false;
-      console.log(this.showToast);
     }, 4000);
   }
 }

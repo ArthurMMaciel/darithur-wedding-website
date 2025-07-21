@@ -9,6 +9,10 @@
     <div class="location-content">
         <div id="map" class="map-container"></div>
     </div>
+    
+    <p class="location-description">
+        Clique <i class="fas fa-arrow-down " style="cursor: pointer; color: var(--golden);"></i> para ver a localização no Google Maps.
+    </p>
 
     <a class="location-address" href="{{ locations[selectedLocation].maps }}" target="_blank" rel="noopener noreferrer">
         {{ locations[selectedLocation].address }}
