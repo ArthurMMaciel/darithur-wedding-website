@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0003-image
+      author: arthur
+      preConditions:
+        onFail: MARK_RAN
+        onError: MARK_RAN
+        not:
+          tableExists:
+            tableName: image
+      changes:
+        - createTable:
+            tableName: image
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: url
+                  type: VARCHAR(500)
+                  constraints:
+                    nullable: false

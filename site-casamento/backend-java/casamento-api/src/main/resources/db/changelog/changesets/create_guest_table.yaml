@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0002-guest
+      author: arthur
+      preConditions:
+        onFail: MARK_RAN
+        onError: MARK_RAN
+        not:
+          tableExists:
+            tableName: guest
+      changes:
+        - createTable:
+            tableName: guest
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(120)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: code
+                  type: VARCHAR(32)   # pode repetir, sem unique

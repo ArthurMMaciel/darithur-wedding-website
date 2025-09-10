@@ -26,8 +26,8 @@ public class GuestController {
         return ResponseEntity.ok(this.service.findAllNonConfirmedGuestsByGroupCode(groupCode));
     }
 
-    @PutMapping("/confirm")
-    public void confirmPresence(@RequestParam(name = "guestsToConfirmIds") List<Long> guestsToConfirmIds) {
+    @PutMapping("/confirm-presence")
+    public void confirmPresence(@RequestParam(name = "guestsToConfirmIds") String guestsToConfirmIds) {
         service.confirmPresence(guestsToConfirmIds);
     }
 }

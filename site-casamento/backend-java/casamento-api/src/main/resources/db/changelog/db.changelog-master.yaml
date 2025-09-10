@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include: { file: db/changelog/changesets/create_guest_table.yaml }
+  - include: { file: db/changelog/changesets/create_image_table.yaml }
+  - include: { file: db/changelog/changesets/create_gift_table.yaml }

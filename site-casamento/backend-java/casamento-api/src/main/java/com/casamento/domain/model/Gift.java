@@ -6,30 +6,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "guest")
-public class Guest {
+@Table(name = "gift")
+public class Gift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "confirmed")
-    private Boolean confirmed = false;
+    @Column(name = "description")
+    private Boolean description;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "sale_value")
+    private BigDecimal saleValue;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
 
-    @Column(name = "group_code")
-    private String groupCode;
 }

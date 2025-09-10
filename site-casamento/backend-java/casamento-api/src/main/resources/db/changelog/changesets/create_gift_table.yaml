@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0004-gift
+      author: arthur
+      preConditions:
+        onFail: MARK_RAN
+        onError: MARK_RAN
+        not:
+          tableExists:
+            tableName: gift
+      changes:
+        - createTable:
+            tableName: gift
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: VARCHAR(150)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: sale_value
+                  type: "NUMERIC(12,2)"
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false

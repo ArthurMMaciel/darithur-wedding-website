@@ -19,4 +19,10 @@ public interface GuestRepository extends JpaRepository<Guest, Long> {
     value = " SELECT * FROM guest g " +
             " WHERE g.confirmed IS FALSE ")
     List<Guest> getAllNonConfirmedGuests();
+
+    @Query(nativeQuery = true,
+            value = " UPDATE guest " +
+                    " SET confirmed = true " +
+                    " WHERE g.id IN (:guestsToConfirmIds) ")
+    void updateGuestConfirmedById(@Param("guestsToConfirmIds") String guestsToConfirmIds);
 }
