@@ -1,7 +1,9 @@
 package com.casamento.adapters.out.persistence;
 
 import com.casamento.domain.model.Guest;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -20,9 +22,17 @@ public interface GuestRepository extends JpaRepository<Guest, Long> {
             " WHERE g.confirmed IS FALSE ")
     List<Guest> getAllNonConfirmedGuests();
 
+    @Modifying
+    @Transactional
     @Query(nativeQuery = true,
-            value = " UPDATE guest " +
+            value = " UPDATE guest g " +
                     " SET confirmed = true " +
                     " WHERE g.id IN (:guestsToConfirmIds) ")
     void updateGuestConfirmedById(@Param("guestsToConfirmIds") String guestsToConfirmIds);
+
+    @Query(nativeQuery = true,
+            value = " SELECT g.name " +
+                    " FROM guest g " +
+                    " WHERE g.id IN (:guestsToConfirmIds) ")
+    List<String> getGuestNameById(@Param("guestsToConfirmIds") String guestsToConfirmIds);
 }
