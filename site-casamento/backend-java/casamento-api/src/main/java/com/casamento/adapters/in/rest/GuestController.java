@@ -1,5 +1,6 @@
 package com.casamento.adapters.in.rest;
 
+import com.casamento.adapters.in.rest.dto.GuestsToConfirmDTO;
 import com.casamento.application.service.GuestService;
 import com.casamento.domain.model.Guest;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,8 @@ public class GuestController {
         return ResponseEntity.ok(this.service.findAllNonConfirmedGuestsByGroupCode(groupCode));
     }
 
-    @PutMapping("/confirm-presence")
-    public void confirmPresence(@RequestParam(name = "guestsToConfirmIds") String guestsToConfirmIds) {
-        service.confirmPresence(guestsToConfirmIds);
+    @PostMapping("/confirm-presence")
+    public void confirmPresence(@RequestBody GuestsToConfirmDTO guestsToConfirm) {
+        service.confirmPresence(guestsToConfirm);
     }
 }

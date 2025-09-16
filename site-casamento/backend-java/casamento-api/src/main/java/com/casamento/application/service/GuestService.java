@@ -4,8 +4,11 @@ import com.casamento.adapters.in.rest.confirmmessage.ConfirmationMessageTemplate
 import com.casamento.adapters.in.rest.dto.EmailJob;
 import com.casamento.adapters.in.rest.dto.GuestsToConfirmDTO;
 import com.casamento.adapters.in.rest.dto.WhatsAppJob;
+import com.casamento.adapters.out.persistence.EmailPublisher;
 import com.casamento.adapters.out.persistence.GuestRepository;
+import com.casamento.adapters.out.persistence.WhatsappPublisher;
 import com.casamento.domain.model.Guest;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +18,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class GuestService {
+    private final EmailPublisher emailPublisher;
+    private final WhatsappPublisher whatsappPublisher;
     private final GuestRepository repository;
 
-    public GuestService(GuestRepository repository) {
+    public GuestService(EmailPublisher emailPublisher,
+                        WhatsappPublisher whatsappPublisher,
+                        GuestRepository repository) {
+        this.emailPublisher  = emailPublisher;
+        this.whatsappPublisher = whatsappPublisher;
         this.repository = repository;
     }
 
@@ -29,6 +38,7 @@ public class GuestService {
         return this.repository.findAllNonConfirmedGuestsByGroupCode(groupCode);
     }
 
+    @Transactional
     public void confirmPresence(GuestsToConfirmDTO guestsToConfirm) {
         String guestsToConfirmIds = guestsToConfirm.getGuestsToConfirmIds();
         String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
@@ -79,13 +89,20 @@ public class GuestService {
         );
         emailPublisher.publish(emailJob);
 
+        String normalizedGuestPhone = normalizeE164(guestPhone);
         WhatsAppJob whatsJob = new WhatsAppJob(
-                guestPhone,
+                normalizedGuestPhone,
                 msgGuest,
                 UUID.randomUUID().toString(),
                 Map.of("kind", "RSVP_CONFIRMATION", "target", "guest")
         );
         whatsappPublisher.publish(whatsJob);
+    }
+
+    private String normalizeE164(String phone) {
+        String digits = phone.replaceAll("\\D", "");
+        if (phone.startsWith("+")) return "+" + digits;
+        return "+55" + digits;
     }
 
     private void sendCoupleConfirmPresenceMessage(String msgCouple) {
@@ -102,7 +119,7 @@ public class GuestService {
                 .split(",");
         for (String phone : recipients) {
             WhatsAppJob whatsJob = new WhatsAppJob(
-                    phone.trim(),
+                    "+5599894520",
                     msgCouple,
                     UUID.randomUUID().toString(),
                     Map.of("kind", "RSVP_CONFIRMATION", "target", "couple")
