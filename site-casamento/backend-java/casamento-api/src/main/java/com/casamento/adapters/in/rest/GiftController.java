@@ -2,7 +2,6 @@ package com.casamento.adapters.in.rest;
 
 import com.casamento.adapters.in.rest.dto.GiftDTO;
 import com.casamento.application.service.GiftService;
-import com.casamento.domain.model.Gift;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

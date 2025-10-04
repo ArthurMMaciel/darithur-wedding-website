@@ -3,14 +3,14 @@ package com.casamento.application.service;
 import com.casamento.adapters.in.rest.confirmmessage.ConfirmationMessageTemplate;
 import com.casamento.adapters.in.rest.dto.EmailJob;
 import com.casamento.adapters.in.rest.dto.GuestsToConfirmDTO;
-import com.casamento.adapters.in.rest.dto.WhatsAppJob;
 import com.casamento.adapters.out.persistence.EmailPublisher;
 import com.casamento.adapters.out.persistence.GuestRepository;
-import com.casamento.adapters.out.persistence.WhatsappPublisher;
+import com.casamento.adapters.out.persistence.webhook.WebhookWhatsappPublisher;
 import com.casamento.domain.model.Guest;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -19,15 +19,15 @@ import java.util.stream.Collectors;
 @Service
 public class GuestService {
     private final EmailPublisher emailPublisher;
-    private final WhatsappPublisher whatsappPublisher;
     private final GuestRepository repository;
+    private final WebhookWhatsappPublisher webhookWhatsappPublisher;
 
     public GuestService(EmailPublisher emailPublisher,
-                        WhatsappPublisher whatsappPublisher,
-                        GuestRepository repository) {
+                        GuestRepository repository,
+                        WebhookWhatsappPublisher webhookWhatsappPublisher) {
         this.emailPublisher  = emailPublisher;
-        this.whatsappPublisher = whatsappPublisher;
         this.repository = repository;
+        this.webhookWhatsappPublisher = webhookWhatsappPublisher;
     }
 
     public List<Guest> getAllNonConfirmedGuests() {
@@ -44,9 +44,10 @@ public class GuestService {
         String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
         String guestHeaderPhone = guestsToConfirm.getGuestHeaderPhone();
 
-        this.repository.updateGuestConfirmedById(guestsToConfirmIds);
+        //this.repository.updateGuestConfirmedById(guestsToConfirmIds);
 
-        List<String> guestsNames = this.repository.getGuestNameById(guestsToConfirmIds);
+        List<String> guestsNames = new ArrayList<>();//this.repository.getGuestNameById(guestsToConfirmIds);
+        guestsNames.add("Arthur Maciel");
 
         String headerName = guestsToConfirm.getGuestHeaderName();
         String companionsNames = formatCompanionsNames(guestsNames, headerName);
@@ -90,19 +91,13 @@ public class GuestService {
         emailPublisher.publish(emailJob);
 
         String normalizedGuestPhone = normalizeE164(guestPhone);
-        WhatsAppJob whatsJob = new WhatsAppJob(
-                normalizedGuestPhone,
-                msgGuest,
-                UUID.randomUUID().toString(),
-                Map.of("kind", "RSVP_CONFIRMATION", "target", "guest")
-        );
-        whatsappPublisher.publish(whatsJob);
+        webhookWhatsappPublisher.sendToGuest(normalizedGuestPhone, msgGuest);
     }
 
     private String normalizeE164(String phone) {
         String digits = phone.replaceAll("\\D", "");
         if (phone.startsWith("+")) return "+" + digits;
-        return "+55" + digits;
+        return "55" + digits;
     }
 
     private void sendCoupleConfirmPresenceMessage(String msgCouple) {
@@ -114,17 +109,6 @@ public class GuestService {
                 Map.of("kind", "RSVP_CONFIRMATION", "target", "couple")
         );
         emailPublisher.publish(emailJob);
-
-        String[] recipients = System.getenv("COUPLE_WHATSAPP_RECIPIENTS")
-                .split(",");
-        for (String phone : recipients) {
-            WhatsAppJob whatsJob = new WhatsAppJob(
-                    "+5599894520",
-                    msgCouple,
-                    UUID.randomUUID().toString(),
-                    Map.of("kind", "RSVP_CONFIRMATION", "target", "couple")
-            );
-            whatsappPublisher.publish(whatsJob);
-        }
+        webhookWhatsappPublisher.sendToGroup(msgCouple);
     }
 }

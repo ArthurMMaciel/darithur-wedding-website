@@ -1,0 +1,107 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-casamento
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: darithur47
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - casamento-net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-casamento
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@casamento.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - casamento-net
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-casamento
+    ports:
+      - "5672:5672"   # comunicação com Spring Boot
+      - "15672:15672" # painel web RabbitMQ
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - casamento-net
+
+  redis:
+    image: redis:7
+    container_name: redis-casamento
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - casamento-net
+
+  evolution-api:
+    image: evoapicloud/evolution-api:latest
+    container_name: evolution-api
+    restart: always
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVER_PORT=8080
+      - DATABASE_PROVIDER=postgresql
+      - DATABASE_URL=postgresql://postgres:darithur47@postgres:5432/postgres
+      - JWT_SECRET=supersecret
+      - CACHE_REDIS_ENABLED=true
+      - CACHE_REDIS_URI=redis://redis:6379/6
+      - CACHE_REDIS_TTL=604800
+      - LOG_LEVEL=ERROR
+      - LOG_COLOR=false
+      - LOG_BAILEYS=error
+      - WEBHOOK_GLOBAL_URL=http://localhost:8080/webhook
+      - WEBHOOK_GLOBAL_ENABLED=true
+      - WEBHOOK_GLOBAL_WEBHOOK_BY_EVENTS=false
+    volumes:
+      - evolution_store:/evolution/instances
+    networks:
+      - casamento-net
+
+  casamento-api:
+    build: .
+    container_name: casamento-api
+    restart: always
+    depends_on:
+      - postgres
+      - rabbitmq
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=darithur47
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=guest
+      - SPRING_RABBITMQ_PASSWORD=guest
+      - EVOLUTION_API_BASE_URL=http://evolution-api:8080
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY:-your-sendgrid-api-key-here}
+      - SENDGRID_EMAIL_FROM=${SENDGRID_EMAIL_FROM:-arthurmartinsmaciel3@gmail.com}
+    networks:
+      - casamento-net
+
+volumes:
+  postgres_data:
+  evolution_store:
+
+networks:
+  casamento-net:
+    driver: bridge
