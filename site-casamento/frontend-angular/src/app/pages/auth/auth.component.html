@@ -1,0 +1,29 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <div class="auth-tabs">
+      <button [class.active]="mode==='login'" (click)="switchMode('login')">Entrar</button>
+      <button [class.active]="mode==='register'" (click)="switchMode('register')">Criar conta</button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <label>
+        Usuário
+        <input type="text" formControlName="username" placeholder="Digite seu usuário" />
+      </label>
+      <div class="field-error" *ngIf="form.get('username')?.touched && form.get('username')?.invalid">Informe um usuário válido.</div>
+
+      <label>
+        Senha
+        <input type="password" formControlName="password" placeholder="Digite sua senha" />
+      </label>
+      <div class="field-error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">Informe uma senha válida.</div>
+
+      <div class="error" *ngIf="error">{{error}}</div>
+
+      <button class="submit" type="submit" [disabled]="loading">
+        {{ mode === 'login' ? 'Entrar' : 'Cadastrar' }}
+      </button>
+    </form>
+  </div>
+</div>
+

@@ -10,6 +10,7 @@ import com.casamento.domain.model.Guest;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,20 +35,23 @@ public class GuestService {
         return this.repository.getAllNonConfirmedGuests();
     }
 
+    public List<Guest> searchAllNonConfirmedGuestsByName(String namePart) {
+        return this.repository.searchAllNonConfirmedGuestsByName(namePart);
+    }
+
     public List<Guest> findAllNonConfirmedGuestsByGroupCode(String groupCode) {
         return this.repository.findAllNonConfirmedGuestsByGroupCode(groupCode);
     }
 
     @Transactional
     public void confirmPresence(GuestsToConfirmDTO guestsToConfirm) {
-        String guestsToConfirmIds = guestsToConfirm.getGuestsToConfirmIds();
+        ArrayList<BigInteger> guestsToConfirmIds = guestsToConfirm.getGuestsToConfirmIds();
         String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
         String guestHeaderPhone = guestsToConfirm.getGuestHeaderPhone();
 
-        //this.repository.updateGuestConfirmedById(guestsToConfirmIds);
+        this.repository.updateGuestConfirmedById(guestsToConfirmIds);
 
-        List<String> guestsNames = new ArrayList<>();//this.repository.getGuestNameById(guestsToConfirmIds);
-        guestsNames.add("Arthur Maciel");
+        List<String> guestsNames = this.repository.getGuestNameById(guestsToConfirmIds);
 
         String headerName = guestsToConfirm.getGuestHeaderName();
         String companionsNames = formatCompanionsNames(guestsNames, headerName);
@@ -60,8 +64,8 @@ public class GuestService {
                                          companionsNames,
                                          guestsNames.size());
 
-        this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
-        this.sendCoupleConfirmPresenceMessage(msgCouple);
+        //this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
+        //this.sendCoupleConfirmPresenceMessage(msgCouple);
     }
 
     private String formatCompanionsNames(List<String> guestsNames, String headerName) {

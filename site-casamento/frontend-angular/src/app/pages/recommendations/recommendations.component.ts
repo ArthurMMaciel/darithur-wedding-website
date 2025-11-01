@@ -37,7 +37,7 @@ export class RecommendationsComponent {
         this.recommendationImage = 'assets/images/recommendations/recomendacoes-homens.png';
         break;
       case 'female':
-        this.recommendationImage = 'assets/images/recommendations/recomendacoes-mulheres.png';
+        this.recommendationImage = 'assets/images/recommendations/recomendacoes_convidadas.png';
         break;
       default:
         this.recommendationImage = 'assets/images/recommendations/recomendacoes-mulheres.png';

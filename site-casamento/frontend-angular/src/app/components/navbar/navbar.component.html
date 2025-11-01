@@ -1,6 +1,10 @@
 <nav class="navbar">
     <div class="navbar__container">
-        <a class="navbar__brand" href="#">Dariane & Arthur</a>
+        <a class="navbar__brand" href="#">Dari & Arthur</a>
+
+        <button class="navbar__toggle" aria-label="Abrir menu" (click)="toggleMenu()">
+          &#9776;
+        </button>
 
         <ul [class.active]="menuOpen" class="navbar__links">
             <li><a> | </a></li>
@@ -22,6 +26,7 @@
             <li><a> | </a></li>
             <li><a href="#countdown" (click)="closeMenu()">Contagem regressiva</a></li>
             <li><a> | </a></li>
+            <li *ngIf="auth.isAuthenticated()"><a href="#" (click)="logout()">Sair</a></li>
         </ul>
     </div>
 </nav>

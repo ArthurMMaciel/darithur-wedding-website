@@ -11,4 +11,5 @@ import { Component, Input } from '@angular/core';
 export class ToastComponent {
   @Input() message: string = '';
   @Input() visible: boolean = false;
+  @Input() type: 'success' | 'error' | 'info' = 'info';
 }

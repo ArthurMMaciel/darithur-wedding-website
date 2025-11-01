@@ -6,10 +6,11 @@
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 
     &__container {
-        padding: 0rem 0rem 0rem 5rem;
+        padding: 0.5rem 1rem;
         margin: 0 auto;
         display: flex;
         align-items: center;
+        justify-content: space-between;
     }
 
     &__brand {
@@ -20,10 +21,10 @@
 
     &__toggle {
         display: none;
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         background: none;
         border: none;
-        color: var(--cream);
+        color: var(--olive);
         cursor: pointer;
     }
 
@@ -50,12 +51,21 @@
     }
 
     @media (max-width: 768px) {
+        &__toggle {
+            display: block;
+        }
+
         &__links {
             display: none;
             position: absolute;
             top: 60px;
+            right: 1rem;
             flex-direction: column;
-            border: 1px solid var(--wood-brown);
+            background: var(--cream);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--terracotta);
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
             li {
                 margin: 0.5rem 0;

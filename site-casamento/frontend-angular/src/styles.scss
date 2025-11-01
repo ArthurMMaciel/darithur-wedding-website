@@ -1,24 +1,29 @@
 :root {
-  --olive:  #54582f;
-  --cream: #fdf6ec;
-  --terracotta: #b85c3a;
-  --golden: #c6a664;
-  --sage-green-light: #a7c09c;  
-  --rose-antique: #d8a7a7; 
-  --wood-brown: #8c6e52;
+  /* Palette inspired by the provided reference */
+  --olive: #4F5A4A;            /* dark olive */
+  --sage-green-light: #BFC8BE; /* light sage */
+  --terracotta: #B69A64;       /* terracotta accent */
+  --khaki: #B69A64;            /* muted khaki */
+  --cream: #EDE9E1;            /* warm ivory */
+  --rose-antique: #F2C9CF;     /* unused legacy, kept for safety */
+  --wood-brown: #C7A765;       /* unused legacy, kept for safety */
+  --font-color: #2F2F2F;       /* body text */
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--cream);
-    color: var(--font-color);
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
+  background-color: var(--cream);
+  color: var(--font-color);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
+*, *::before, *::after { box-sizing: border-box; }
+img, video { max-width: 100%; height: auto; }
 
 a {
     text-decoration: none;
@@ -47,3 +52,5 @@ a {
   opacity: 0;
   animation: fadeIn 1s ease-out 0.5s forwards;
 }
+
+/* removed ng-select theme import (not used) */

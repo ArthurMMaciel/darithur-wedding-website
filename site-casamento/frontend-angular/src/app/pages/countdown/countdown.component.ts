@@ -4,7 +4,8 @@ import { animate } from '@motionone/dom';
 @Component({
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
-  styleUrls: ['./countdown.component.scss']
+  styleUrls: ['./countdown.component.scss'],
+  standalone: true
 })
 export class CountdownComponent implements OnInit, OnDestroy {
   targetDate: Date = new Date('2026-04-25T16:40:00');

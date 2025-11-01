@@ -23,13 +23,13 @@
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  min-width: 320px;
-  max-width: 500px;
+  min-width: 280px;
+  max-width: 560px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   border-radius: 5px;
-  border: 1px solid var(--golden);
+  border: 1px solid var(--terracotta);
 
   input {
     color: var(--olive);
@@ -43,6 +43,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 input {
@@ -95,23 +96,52 @@ input:focus {
   font-style: italic;
   text-align: center;
   color: var(--olive);
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
 }
 
 .select-input {
   padding: 0.5rem;
-  border: 1px solid var(--golden);
+  border: 1px solid var(--terracotta);
   border-radius: 5px;
   font-size: 1rem;
   background-color: var(--cream);
   color: var(--olive);
 }
 
+.suggestions {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid var(--terracotta);
+  background: var(--cream);
+  border-radius: 6px;
+  box-shadow: 0 8px 16px rgba(0,0,0,.15);
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  color: var(--olive);
+}
+.suggestion-item:hover {
+  background: #f3efe7;
+}
+.suggestion-empty,
+.suggestion-loading {
+  padding: 0.5rem 0.75rem;
+  color: var(--olive);
+  font-style: italic;
+}
+
 .rsvp-button {
   background-color: var(--cream);
   color: var(--olive);
   padding: 0.5rem;
-  border: 1px solid var(--golden);
+  border: 1px solid var(--terracotta);
   border-radius: 5px;
   font-weight: bold;
   font-size: 1rem;
@@ -121,9 +151,26 @@ input:focus {
 }
 
 .rsvp-title {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 6vw, 3.5rem);
   color: var(--olive);
   margin-bottom: 2rem;
   text-decoration: none;
   text-align: center;
+}
+
+@media (max-width: 900px) {
+  .rsvp-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .companions-box {
+    min-width: unset;
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+
+  .rsvp-form {
+    max-width: 100%;
+  }
 }

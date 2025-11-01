@@ -5,9 +5,7 @@
       <img *ngFor="let img of leftImages" [src]="img"/>
     </div>
     <div class="story-content">
-      <p class="story-text">
-        {{storyText}}
-      </p>
+      <p class="story-text" [innerHTML]="storyText"></p>
     </div>
     <div class="photo-column right">
       <img *ngFor="let img of rightImages" [src]="img"/>

@@ -37,3 +37,6 @@
     <app-countdown></app-countdown>
   </section>
 </main>
+
+<!-- Tela de Autenticação (sobreposta) -->
+<app-auth *ngIf="!auth.isAuthenticated()"></app-auth>

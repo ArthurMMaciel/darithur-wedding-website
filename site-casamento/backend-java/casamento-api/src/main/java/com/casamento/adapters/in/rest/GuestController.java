@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/guests")
+@CrossOrigin(origins = "*")
 public class GuestController {
     private final GuestService service;
 
@@ -20,6 +21,11 @@ public class GuestController {
     @GetMapping("/get-all-non-confirmed-guests")
     public ResponseEntity<List<Guest>> getAllNonConfirmedGuests() {
         return ResponseEntity.ok(this.service.getAllNonConfirmedGuests());
+    }
+
+    @GetMapping("/search-non-confirmed")
+    public ResponseEntity<List<Guest>> searchAllNonConfirmedGuestsByName(@RequestParam("name") String name) {
+        return ResponseEntity.ok(this.service.searchAllNonConfirmedGuestsByName(name));
     }
 
     @GetMapping("/find-all-non-confirmed-guests-by-group-code/{groupCode}")

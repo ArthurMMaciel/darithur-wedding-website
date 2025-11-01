@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-our-story',
   imports: [CommonModule],
+  standalone: true,
   templateUrl: './our-story.component.html',
   styleUrls: ['./our-story.component.scss']
 })
@@ -25,14 +26,9 @@ export class OurStoryComponent {
   ];
   
   storyText: string = `
-    Tudo começou no terceiro ano do ensino médio, quando os caminhos de dois corações se cruzaram de forma inesperada. Eles não tinham ideia de que aquele simples "oi" nos corredores da escola daria início à maior aventura de suas vidas. Em apenas três meses, entre conversas no recreio, risadas nas aulas e olhares tímidos durante as provas, já estavam namorando. Foi rápido, intenso e sincero.
-
-    O relacionamento floresceu ao longo do tempo, e a verdadeira mágica aconteceu durante o processo: eles se conheceram de verdade enquanto já estavam juntos. Descobriram gostos diferentes, manias engraçadas, medos bobos e sonhos parecidos. Aprenderam a lidar com provas finais e crises existenciais, com ciúmes bobos e domingos tediosos. Brigaram por mensagens não respondidas, mas também ficaram horas conversando sobre o futuro.
-
-    Passaram juntos pelo último ano do colégio, se apoiando nas decisões mais difíceis da juventude. Depois, encararam a faculdade, com rotinas diferentes, novos desafios e ainda mais responsabilidades. Mas nunca deixaram de caminhar lado a lado. Um levava café na biblioteca, o outro fazia surpresa no meio da semana. Quando um caía, o outro segurava. Quando um duvidava, o outro acreditava por dois.
-
-    Foram crescendo juntos — como amigos, companheiros e, acima de tudo, como casal. Com o tempo, o namoro virou parceria, o carinho virou cuidado, e o amor virou lar. Eles se viram em tantas versões ao longo dos anos, mas sempre escolheram permanecer. E é essa escolha que os trouxe até aqui.
-
-    Hoje, depois de tantos capítulos vividos, eles escrevem o mais bonito de todos: o começo da vida a dois, como marido e esposa.
+    A nossa história começou no terceiro ano do Ensino Médio, quando os nossos caminhos se cruzaram de forma inesperada. Não tínhamos ideia de que aquele simples olhar na sala de aula daria início ao maior acerto de nossas vidas. Em apenas três meses, entre conversas no recreio, risadas nas aulas e passeios na rua, já estávamos namorando. Foi rápido, intenso e sincero.<br>
+	  O nosso primeiro ano foi repleto de descobertas, estávamos nos conhecendo, vivendo o terceiro ano do Ensino Médio e passamos por muitas situações divertidas. Um ano incrível. O segundo e o terceiro foram acompanhados pela pandemia, incertezas do dia seguinte e muitas preocupações com a faculdade, mas foi exatamente nesse período que entendemos que a nossa relação era muito sólida e que queríamos ficar cada vez mais juntos.<br>
+	  No quarto e quinto ano de namoro, foi quando conhecemos de fato a vida adulta, já que não lidávamos somente com os estudos, pois o trabalho também entrou em nossa rotina. Aos poucos entendemos que conciliar estudo, trabalho e relações sociais ficava ainda mais fácil quando nos apoiávamos. Foram inúmeras as madrugadas em que ficamos acordados juntos para finalizar atividades acadêmicas ou encerrarmos a demanda do trabalho. Uma fase de suma importância para o amadurecimento da nossa relação, o que resultou no pedido de casamento, no dia 23 de novembro de 2024.<br>
+	  E finalmente chegamos no nosso sexto ano: a preparação para o casamento. Um ano mágico em que estamos pensando e trabalhando em cada detalhe do nosso sonho. Tudo que vocês presenciarão, no Sábado, dia 25, foi pensado, planejado e será executado com todo amor e carinho. Por isso, queremos que essa experiência não seja única apenas para nós, mas que vocês possam curtir muito e lembrar desse momento para sempre. Estamos ansiosos aguardando você!
   `;
 }

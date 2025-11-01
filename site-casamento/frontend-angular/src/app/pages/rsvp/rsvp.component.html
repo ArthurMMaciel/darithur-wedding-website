@@ -3,61 +3,48 @@
   <div class="rsvp-container">
     <form class="rsvp-form">
       <div class="form-group">
-        <label for="guestName">Nome* (obrigatório)</label>
-        <select [(ngModel)]="selectedGuest"
-                (ngModelChange)="onGuestSelect()"
-                [ngModelOptions]="{ standalone: true }"
-                class="select-input"
-                [disabled]="guestList.length === 0"
-                style="margin-top: 2px;">
-                <option value="" selected>Nenhum convidado</option>
-                <option *ngFor="let guest of guestList" [ngValue]="guest">
-                    {{ guest.name }}
-                </option>
-        </select>
+        <label for="guestName">Nome*</label>
+        <input id="guestName" class="select-input" type="text" [value]="searchText" (input)="onSearchInput($event)"
+          (focus)="showGuestSuggestions = true" (blur)="onGuestInputBlur()" placeholder="Digite para buscar seu nome" autocomplete="off" />
+        <div class="suggestions" *ngIf="showGuestSuggestions">
+          <div class="suggestion-item" *ngFor="let guest of guestList" (click)="selectGuest(guest)">
+            {{ guest.name }}
+          </div>
+          <div class="suggestion-empty" *ngIf="!loadingGuests && guestList.length === 0">Nenhum convidado encontrado
+          </div>
+          <div class="suggestion-loading" *ngIf="loadingGuests">Carregando...</div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="phone" style="margin-top: 5px;">Telefone* (obrigatório)</label>
-        <input style="background-color: var(--cream); margin-top: 2px; border: 1px solid var(--golden);" 
-               type="tel" 
-               id="phone" 
-               name="phone" 
-               [(ngModel)]="phone"
-               placeholder="Digite seu telefone"
-               required />
+        <label for="phone" style="margin-top: 5px;">Telefone*</label>
+        <input style="background-color: var(--cream); margin-top: 2px; border: 1px solid var(--terracotta);" type="tel"
+          id="phone" name="phone" [(ngModel)]="phone" (input)="onPhoneInput($event)" inputmode="numeric" pattern="\\d*"
+          maxlength="11" placeholder="Digite seu telefone" required />
       </div>
 
       <div class="form-group">
-        <label for="email" style="margin-top: 5px;">Email* (obrigatório)</label>
-        <input style="background-color: var(--cream); margin-top: 2px; border: 1px solid var(--golden);" 
-               type="email" 
-               id="email" 
-               name="email" 
-               [(ngModel)]="email" 
-               placeholder="Digite seu email"
-               required />
+        <label for="email" style="margin-top: 5px;">Email*</label>
+        <input style="background-color: var(--cream); margin-top: 2px; border: 1px solid var(--terracotta);" type="email"
+          id="email" name="email" [(ngModel)]="email" placeholder="Digite seu email" required />
       </div>
 
-      <button class="rsvp-button" 
-              [disabled]="!selectedGuest || !phone || !email"
-              style="margin-top: 20px;">
-        Confirmar Presença
+      <button class="rsvp-button" type="button" (click)="submitRSVP()" style="margin-top: 10px;">
+        {{ submitting ? 'Enviando...' : 'Confirmar Presença' }}
       </button>
     </form>
-    
-    <div *ngIf="selectedGuest && selectedGuest.companions.length > 0" class="companions-box">
-        <a class="companion-title">Acompanhantes</a>
-        <div *ngFor="let companion of selectedGuest.companions" class="companion-form">
-            <p>{{ companion.name }}</p>
-            <label>
-                <input type="radio" [name]="'companion-' + companion.id" [(ngModel)]="companion.response" [value]="'yes'"/> Presença confirmada
-            </label>
-            <label>
-                <input type="radio" [name]="'companion-' + companion.id" [(ngModel)]="companion.response" [value]="'no'"/> Presença não confirmada
-            </label>
-        </div>
+
+    <div *ngIf="selectedGuest && companions.length > 0" class="companions-box">
+      <a class="companion-title">Acompanhantes</a>
+      <div *ngFor="let companion of companions" class="companion-form">
+        <p>{{ companion.name }}</p>
+        <label>
+          <input type="checkbox" [(ngModel)]="companion.isSelected" [ngModelOptions]="{ standalone: true }" /> Confirmar
+          presença
+        </label>
+      </div>
     </div>
   </div>
   <p class="rsvp-footer-text">Caso seu nome não esteja nas opções, você já foi confirmado por alguém!</p>
 </section>
+<app-toast [message]="toastMessage" [visible]="toastVisible" [type]="toastType"></app-toast>

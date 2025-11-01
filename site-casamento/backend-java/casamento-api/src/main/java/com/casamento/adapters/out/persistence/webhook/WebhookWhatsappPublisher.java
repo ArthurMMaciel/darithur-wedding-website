@@ -16,16 +16,16 @@ public class WebhookWhatsappPublisher {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${evolution.api.base-url}")
+    @Value("${evolution.api.base-url:http://localhost:8080}")
     private String baseUrl;
 
-    @Value("${evolution.api.key}")
+    @Value("${evolution.api.key:}")
     private String apiKey;
 
-    @Value("${evolution.instance}")
+    @Value("${evolution.instance:default}")
     private String instance;
 
-    @Value("${evolution.group.id}")
+    @Value("${evolution.group.id:}")
     private String groupId;
 
     public void sendToGroup(String message) {

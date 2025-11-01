@@ -13,7 +13,7 @@
 
     button {
       background: var(--cream);
-      border-color: var(--golden);
+      border-color: var(--terracotta);
       padding: 0.5rem 1.5rem;
       border-radius: 5px;
       font-weight: bold;
@@ -26,7 +26,7 @@
       margin-top: 10px;
       cursor: pointer;
       &.active {
-        background: var(--golden);
+        background: var(--terracotta);
         color: var(--olive);
       }
     }
@@ -35,21 +35,21 @@
 }
 
 .recommendation-title{
-  font-size: 3.5rem;
-  color: var(--golden);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--terracotta);
   text-decoration: none;
 }
 
 .recommendation-description {
   font-size: 1.3rem;
-  color: var(--golden);
+  color: var(--terracotta);
   font-style: italic;
 }
 
 .recommendation-image {
-  min-width: 320px;
+  width: 100%;
   max-width: 550px;
   object-fit: cover;
-  border: 1px solid var(--golden);
+  border: 1px solid var(--terracotta);
   border-radius: 5px;
 }

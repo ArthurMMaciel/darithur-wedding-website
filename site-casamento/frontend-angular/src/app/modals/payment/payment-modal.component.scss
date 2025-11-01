@@ -15,7 +15,7 @@
   background-color: var(--olive);
   padding: 2rem;
   border-radius: 8px;
-  width: 350px;
+  width: min(90vw, 380px);
   position: relative;
   text-align: center;
   color: var(--cream);
@@ -34,12 +34,12 @@
 .modal-heading {
   font-size: 1rem;
   margin-bottom: 1rem;
-  color: var(--golden);
+  color: var(--terracotta);
 }
 
 .qr-code {
-  width: 200px;
-  border: 1px solid var(--golden);
+  width: min(60vw, 200px);
+  border: 1px solid var(--terracotta);
 }
 
 .qr-note {
@@ -58,7 +58,7 @@
 .payment-key {
   background-color: var(--cream);
   color: var(--olive);
-  border: 1px solid var(--golden);
+  border: 1px solid var(--terracotta);
   padding: 0.5rem;
   border-radius: 5px;
   flex: 1;
@@ -72,7 +72,7 @@
 
 .pix-key{
   height: 20px;
-  border: 1px solid var(--golden);
+  border: 1px solid var(--terracotta);
   border-radius: 5px;
   font-weight: bold;
   color: var(--olive);

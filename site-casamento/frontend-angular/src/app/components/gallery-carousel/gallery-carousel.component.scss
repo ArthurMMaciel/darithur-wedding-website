@@ -21,7 +21,7 @@
     min-width: 350px;
     min-height: 280px;
     object-fit: cover;
-    border: 1px solid var(--golden);
+    border: 1px solid var(--sage-green-light);
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
@@ -34,9 +34,9 @@
 
     button {
       padding: 0.3rem 0.8rem;
-      background-color: var(--golden);
+      background-color: var(--sage-green-light);
       color: var(--olive);
-      border: 1px solid var(--golden);
+      border: 1px solid var(--sage-green-light);
       border-radius: 5px;
       cursor: pointer;
 
@@ -48,13 +48,13 @@
   }
 
   select {
-    border: 1px solid var(--golden);
+    border: 1px solid var(--sage-green-light);
     border-radius: 5px;
     display: flex;
     width: 5rem;
     padding: 0.3rem;
     color: var(--olive);
-    background-color: var(--golden);
+    background-color: var(--sage-green-light);
     font-weight: bold;
     width: 3rem;
   }

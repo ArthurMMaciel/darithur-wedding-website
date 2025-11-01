@@ -19,10 +19,10 @@ import java.util.Map;
 public class EmailConsumer {
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${sendgrid.api.key}")
+    @Value("${sendgrid.api.key:}")
     private String sendgridApiKey;
 
-    @Value("${sendgrid.email.from}")
+    @Value("${sendgrid.email.from:no-reply@example.com}")
     private String emailFrom;
 
     @RabbitListener(queues = RabbitConfig.EMAIL_QUEUE)
