@@ -1,12 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { API_BASE_URL } from '../config/api.config';
 
 type LoginPayload = { username: string; password: string };
 type RegisterPayload = { username: string; password: string };
 
-// Ajuste a base de URL conforme seu backend
-const API_BASE = '/api';
+const API_BASE = API_BASE_URL;
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {

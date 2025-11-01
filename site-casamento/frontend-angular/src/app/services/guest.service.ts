@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API_BASE_URL } from '../config/api.config';
 
 export interface Guest {
   id: number;
@@ -20,7 +21,7 @@ export interface GuestsToConfirmDto {
 
 @Injectable({ providedIn: 'root' })
 export class GuestService {
-  private readonly apiBase = 'http://localhost:8085';
+  private readonly apiBase = API_BASE_URL;
 
   constructor(private http: HttpClient) {}
 
