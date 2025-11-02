@@ -42,15 +42,18 @@
     color: var(--sage-green-light);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: justify;
-    font-size: clamp(0.93rem, 1.7vw, 0.75rem);
+    /* Ajuste de responsividade: min < preferred < max */
+    font-size: clamp(0.75rem, 1.7vw, 0.93rem);
     line-height: 1.65;
-    padding: 0.5rem;
+    padding: 1rem;
     border: 2px solid var(--sage-green-light);
     border-radius: 5px;
     overflow-y: auto;
-    height: clamp(515px, 9vw, 90px);
+    /* Evita corte do texto no topo e usa rolagem previsível */
+    max-height: 520px;
+    min-height: 420px;
     margin-top: 5px;
   }
 }

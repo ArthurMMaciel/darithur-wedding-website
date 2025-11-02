@@ -7,7 +7,15 @@
     </div>
 
     <div class="location-content">
-        <div id="map" class="map-container"></div>
+        <div class="map-container">
+            <iframe
+              title="Mapa"
+              [src]="locations[selectedLocation].embed | safeUrl"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
     <p class="location-description">
