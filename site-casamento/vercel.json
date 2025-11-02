@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "installCommand": "cd frontend-angular && npm install",
-  "buildCommand": "cd frontend-angular && npm run build",
-  "outputDirectory": "frontend-angular/dist/site-casamento/browser",
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "builds": [
+    {
+      "src": "frontend-angular/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/site-casamento/browser"
+      }
+    }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
