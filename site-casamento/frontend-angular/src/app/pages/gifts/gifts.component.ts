@@ -155,7 +155,7 @@ export class GiftsComponent {
 
   standardGifts = [
     {
-      name: 'Os valores se tornam créditos para compras ou pode comprar normal e entregar.',
+      name: 'Os valores se tornam créditos para compras ou pode ir ao local e comprar para entregar.',
       image: 'assets/images/gifts/magalu.png',
       url: 'https://www.querodecasamento.com.br/lista-de-casamento/arthur-martins-dariane-peixoto'
     }
