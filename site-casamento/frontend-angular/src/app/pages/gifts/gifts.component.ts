@@ -156,8 +156,8 @@ export class GiftsComponent {
   standardGifts = [
     {
       name: 'Os valores se tornam créditos para compras ou pode comprar normal e entregar.',
-      image: 'assets/images/gifts/havan.png',
-      url: 'https://lista.havan.com.br/Convidado/ItensListaPresente/870792'
+      image: 'assets/images/gifts/magalu.png',
+      url: 'https://www.querodecasamento.com.br/lista-de-casamento/arthur-martins-dariane-peixoto'
     }
   ];
 
