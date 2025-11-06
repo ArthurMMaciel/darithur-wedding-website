@@ -1,11 +1,20 @@
-# Use a imagem oficial do OpenJDK 21
-FROM openjdk:21-jdk-slim
+## Multi-stage build: compila o JAR e depois roda com JRE enxuto
 
-# Define o diretório de trabalho
+# 1) Build stage
+FROM maven:3.9.9-eclipse-temurin-21 AS build
+WORKDIR /build
+
+# Copia e compila
+COPY pom.xml .
+COPY src ./src
+RUN mvn -q -DskipTests package
+
+# 2) Runtime stage
+FROM eclipse-temurin:21-jre AS runtime
 WORKDIR /app
 
-# Copia o arquivo JAR da aplicação
-COPY target/casamento-api-0.0.1-SNAPSHOT.jar app.jar
+# Copia o artefato construído no estágio anterior
+COPY --from=build /build/target/casamento-api-*.jar app.jar
 
 # Expõe a porta 8085 (conforme configurado no application.properties)
 EXPOSE 8085

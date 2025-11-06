@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  # Ajustes leves no backend para caber em 1 GB
+  backend:
+    environment:
+      - EVOLUTION_API_BASE_URL=http://evolution-api:8080
+      - JAVA_OPTS=${JAVA_OPTS}
+      - SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE=5
+      - SPRING_AUTOCONFIGURE_EXCLUDE=org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+
+  # Postgres com parâmetros conservadores
+  postgres:
+    command: [
+      "postgres",
+      "-c","shared_buffers=32MB",
+      "-c","work_mem=4MB",
+      "-c","maintenance_work_mem=32MB",
+      "-c","effective_cache_size=128MB",
+      "-c","max_connections=30"
+    ]
+
+  # Redis para Evolution
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "no", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+    networks: [internal]
+
+  # Evolution API (não exposta publicamente)
+  evolution-api:
+    image: evoapicloud/evolution-api:latest
+    restart: unless-stopped
+    depends_on: [postgres, redis]
+    environment:
+      - SERVER_PORT=8080
+      - NODE_OPTIONS=--max-old-space-size=256
+      - JWT_SECRET=${JWT_SECRET}
+      - AUTHENTICATION_API_KEY=${AUTHENTICATION_API_KEY}
+      - DATABASE_PROVIDER=postgresql
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - CACHE_REDIS_URI=redis://redis:6379
+    networks: [internal]
+
+networks:
+  internal:
+    external: false

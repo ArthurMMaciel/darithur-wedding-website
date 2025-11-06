@@ -1,0 +1,5 @@
+api.casamento-darithur.com.br {
+  encode zstd gzip
+  reverse_proxy backend:8085
+}
+
