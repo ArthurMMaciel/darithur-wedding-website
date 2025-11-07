@@ -40,4 +40,10 @@ public class TestController {
         emailPublisher.publish(new EmailJob(to, subject, text, "test", java.util.Map.of("kind", "TEST")));
         return ResponseEntity.ok("ok");
     }
+
+    @GetMapping("/whatsapp/group")
+    public ResponseEntity<String> sendWhatsappToGroup(@RequestParam(value = "text", defaultValue = "Mensagem de teste no grupo") String text) {
+        whatsapp.sendToGroup(text);
+        return ResponseEntity.ok("ok");
+    }
 }

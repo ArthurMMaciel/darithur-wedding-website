@@ -1,13 +1,14 @@
 api.casamento-darithur.com.br {
   encode zstd gzip
+
+  # Evolution first, so it is not shadowed by the catch-all
+  handle_path /evolution/* {
+    reverse_proxy evolution-api:8080
+  }
+
   # Backend API
   reverse_proxy /backend* backend:8085
   reverse_proxy /guests* backend:8085
   reverse_proxy /gift* backend:8085
   reverse_proxy /* backend:8085
-
-  # Temporário/útil: expor Evolution API para onboarding (QR, status)
-  handle_path /evolution/* {
-    reverse_proxy evolution-api:8080
-  }
 }
