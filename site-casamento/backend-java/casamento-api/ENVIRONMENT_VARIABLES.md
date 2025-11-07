@@ -8,10 +8,7 @@ Para executar a aplicação, você precisa configurar as seguintes variáveis de
 - SPRING_DATASOURCE_PASSWORD=darithur47
 
 ## RabbitMQ
-- SPRING_RABBITMQ_HOST=localhost
-- SPRING_RABBITMQ_PORT=5672
-- SPRING_RABBITMQ_USERNAME=guest
-- SPRING_RABBITMQ_PASSWORD=guest
+Removido do projeto. Não é mais necessário.
 
 ## SendGrid (Email)
 - SENDGRID_API_KEY=sua-chave-sendgrid-aqui

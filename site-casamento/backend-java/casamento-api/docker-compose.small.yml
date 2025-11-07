@@ -7,7 +7,7 @@ services:
       - EVOLUTION_API_BASE_URL=http://evolution-api:8080
       - JAVA_OPTS=${JAVA_OPTS}
       - SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE=5
-      - SPRING_AUTOCONFIGURE_EXCLUDE=org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+      # Rabbit removido: nenhuma autoconfiguração necessária
 
   # Postgres com parâmetros conservadores
   postgres:

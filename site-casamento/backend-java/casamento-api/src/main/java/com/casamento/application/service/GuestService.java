@@ -64,8 +64,8 @@ public class GuestService {
                                          companionsNames,
                                          guestsNames.size());
 
-        //this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
-        //this.sendCoupleConfirmPresenceMessage(msgCouple);
+        this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
+        this.sendCoupleConfirmPresenceMessage(msgCouple);
     }
 
     private String formatCompanionsNames(List<String> guestsNames, String headerName) {

@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@org.springframework.boot.autoconfigure.condition.ConditionalOnProperty(
+        prefix = "app.test",
+        name = "enabled",
+        havingValue = "true",
+        matchIfMissing = true
+)
 @RequestMapping("/test")
 public class TestController {
     private final WebhookWhatsappPublisher whatsapp;
@@ -35,4 +41,3 @@ public class TestController {
         return ResponseEntity.ok("ok");
     }
 }
-
