@@ -5,9 +5,11 @@ import com.casamento.adapters.out.persistence.EmailPublisher;
 import com.casamento.config.RabbitConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 @Component
+@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "true")
 @RequiredArgsConstructor
 public class EmailPublisherImpl implements EmailPublisher {
     private final RabbitTemplate rabbitTemplate;

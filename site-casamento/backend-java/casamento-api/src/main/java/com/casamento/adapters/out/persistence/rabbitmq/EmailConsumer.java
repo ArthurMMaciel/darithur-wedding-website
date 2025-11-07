@@ -4,6 +4,7 @@ import com.casamento.adapters.in.rest.dto.EmailJob;
 import com.casamento.config.RabbitConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
+@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "true")
 @RequiredArgsConstructor
 public class EmailConsumer {
     private final RestTemplate restTemplate = new RestTemplate();

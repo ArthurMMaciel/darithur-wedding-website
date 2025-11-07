@@ -3,13 +3,17 @@ package com.casamento.adapters.out.persistence.rabbitmq;
 import com.casamento.adapters.in.rest.dto.WhatsAppJob;
 import com.casamento.config.RabbitConfig;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
+@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "true")
 public class WhatsappConsumer {
     private final RestTemplate restTemplate = new RestTemplate();
 

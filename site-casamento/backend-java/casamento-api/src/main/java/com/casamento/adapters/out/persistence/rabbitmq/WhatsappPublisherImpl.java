@@ -6,8 +6,10 @@ import com.casamento.config.RabbitConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 @Component
+@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "true")
 @RequiredArgsConstructor
 public class WhatsappPublisherImpl implements WhatsappPublisher {
     private final RabbitTemplate rabbitTemplate;
