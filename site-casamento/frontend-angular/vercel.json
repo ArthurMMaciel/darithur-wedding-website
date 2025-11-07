@@ -10,6 +10,7 @@
     }
   ],
   "routes": [
+    { "src": "/api/(.*)", "dest": "https://api.casamento-darithur.com.br/$1" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
