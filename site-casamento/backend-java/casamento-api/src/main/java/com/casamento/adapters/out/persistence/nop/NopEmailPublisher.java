@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(prefix = "app.rabbit", name = "enabled", havingValue = "false", matchIfMissing = true)
+@org.springframework.boot.autoconfigure.condition.ConditionalOnExpression("'${app.rabbit.enabled:false}' == 'false' and '${sendgrid.api.key:}' == ''")
 public class NopEmailPublisher implements EmailPublisher {
     private static final Logger log = LoggerFactory.getLogger(NopEmailPublisher.class);
 
