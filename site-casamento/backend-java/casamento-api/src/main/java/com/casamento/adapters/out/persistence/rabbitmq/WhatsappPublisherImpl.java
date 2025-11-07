@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 @Component
-@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "app.rabbit", name = "enabled", havingValue = "true", matchIfMissing = false)
 @RequiredArgsConstructor
 public class WhatsappPublisherImpl implements WhatsappPublisher {
     private final RabbitTemplate rabbitTemplate;

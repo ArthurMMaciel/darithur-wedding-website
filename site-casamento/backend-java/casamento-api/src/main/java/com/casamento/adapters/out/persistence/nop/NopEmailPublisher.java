@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "false", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "app.rabbit", name = "enabled", havingValue = "false", matchIfMissing = true)
 public class NopEmailPublisher implements EmailPublisher {
     private static final Logger log = LoggerFactory.getLogger(NopEmailPublisher.class);
 
@@ -18,4 +18,3 @@ public class NopEmailPublisher implements EmailPublisher {
         log.info("[NopEmailPublisher] Email job suppressed (Rabbit disabled): to={} subject={}", job.getTo(), job.getSubject());
     }
 }
-

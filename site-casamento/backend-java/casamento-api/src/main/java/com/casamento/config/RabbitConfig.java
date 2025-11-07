@@ -10,7 +10,7 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 
 @Configuration
-@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "app.rabbit", name = "enabled", havingValue = "true", matchIfMissing = false)
 public class RabbitConfig {
     public static final String EXCHANGE = "notifications.exchange";
     public static final String EMAIL_QUEUE = "notifications.email";

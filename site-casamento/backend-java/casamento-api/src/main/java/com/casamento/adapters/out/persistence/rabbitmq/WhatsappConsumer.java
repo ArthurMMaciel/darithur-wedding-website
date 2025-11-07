@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "app.rabbit", name = "enabled", havingValue = "true", matchIfMissing = false)
 public class WhatsappConsumer {
     private final RestTemplate restTemplate = new RestTemplate();
 

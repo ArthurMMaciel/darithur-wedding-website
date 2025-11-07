@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 @Component
-@ConditionalOnProperty(value = "app.rabbit.enabled", havingValue = "true")
+@ConditionalOnProperty(prefix = "app.rabbit", name = "enabled", havingValue = "true", matchIfMissing = false)
 @RequiredArgsConstructor
 public class EmailPublisherImpl implements EmailPublisher {
     private final RabbitTemplate rabbitTemplate;
