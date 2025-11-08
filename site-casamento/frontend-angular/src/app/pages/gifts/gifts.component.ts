@@ -119,12 +119,12 @@ export class GiftsComponent {
     {
       name: 'Cueca sexy para noite de núpcias',
       value: 35,
-      image: 'assets/images/gifts/cueca.png'
+      image: 'assets/images/gifts/cueca_batman.png'
     },
     {
       name: 'Lingerie sexy para noite de núpcias',
       value: 50,
-      image: 'assets/images/gifts/lingerie_hello.png'
+      image: 'assets/images/gifts/hello_kitty.png'
     },
     {
       name: '3 meses de Netflix para o casal',
