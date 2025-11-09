@@ -20,18 +20,6 @@ services:
       "-c","max_connections=30"
     ]
 
-  # Postgres dedicado para a Evolution (isola credenciais da app)
-  evolution-postgres:
-    image: postgres:16
-    restart: unless-stopped
-    environment:
-      - POSTGRES_DB=evolution
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=${EVOLUTION_DB_PASSWORD}
-    volumes:
-      - evolution_pg_data:/var/lib/postgresql/data
-    networks: [internal]
-
   # Redis para Evolution
   redis:
     image: redis:7-alpine
@@ -43,27 +31,24 @@ services:
   evolution-api:
     image: evoapicloud/evolution-api:latest
     restart: unless-stopped
-    depends_on: [evolution-postgres, redis]
+    depends_on: [postgres, redis]
     environment:
       - SERVER_PORT=8080
       - NODE_OPTIONS=--max-old-space-size=256
       - JWT_SECRET=${JWT_SECRET}
       - AUTHENTICATION_API_KEY=${AUTHENTICATION_API_KEY}
+      # Banco: usa o Postgres já existente
       - DATABASE_PROVIDER=postgresql
-      # Variáveis conforme doc v2
-      - DB_HOST=evolution-postgres
-      - DB_PORT=5432
-      - DB_USER=user
-      - DB_PASS=${EVOLUTION_DB_PASSWORD}
-      - DB_DATABASE=evolution
-      # Algumas builds usam DATABASE_URL
-      - DATABASE_URL=postgresql://user:${EVOLUTION_DB_PASSWORD}@evolution-postgres:5432/evolution?schema=public
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=${POSTGRES_USER}
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_NAME=evolution
+      # Algumas builds usam DATABASE_URL; mantemos coerente
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/evolution?schema=public
       - CACHE_REDIS_URI=redis://redis:6379
     networks: [internal]
 
 networks:
   internal:
     external: false
-
-volumes:
-  evolution_pg_data:
