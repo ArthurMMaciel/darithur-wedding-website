@@ -27,17 +27,17 @@ export class GiftsComponent {
     },
     {
       name: 'Cobertor para o noivo, porque a noiva já está coberta de razão',
-      value: 500,
+      value: 200,
       image: 'assets/images/gifts/banguela.png'
     },
     {
       name: 'Camiseta nova do Corinthians para o casal',
-      value: 500,
+      value: 200,
       image: 'assets/images/gifts/casal_curinthia.png'
     },
     {
       name: 'Café da manhã da lua de mel',
-      value: 500,
+      value: 300,
       image: 'assets/images/gifts/cafe.png'
     },
     {
@@ -47,7 +47,7 @@ export class GiftsComponent {
     },
     {
       name: 'Passeio de bug na lua de mel',
-      value: 400,
+      value: 500,
       image: 'assets/images/gifts/bug_lua.png'
     },
     {
@@ -67,7 +67,7 @@ export class GiftsComponent {
     },
     {
       name: 'Vale para o noivo jogar bola todo mês',
-      value: 500,
+      value: 250,
       image: 'assets/images/gifts/arthur_bola.png'
     },
     {
@@ -77,7 +77,7 @@ export class GiftsComponent {
     },
     {
       name: 'Maquiagem de blogueira para a noiva',
-      value: 400,
+      value: 200,
       image: 'assets/images/gifts/camila_pudim.png'
     },
     {
@@ -92,7 +92,7 @@ export class GiftsComponent {
     },
     {
       name: 'Perguntar sobre filhos',
-      value: 800,
+      value: 1000,
       image: 'assets/images/gifts/filhoss.png',
       available: false
     },
@@ -113,7 +113,7 @@ export class GiftsComponent {
     },
     {
       name: 'Só pra não dizer que eu não dei nada',
-      value: 25,
+      value: 33,
       image: 'assets/images/gifts/nada.png'
     },
     {
@@ -123,17 +123,17 @@ export class GiftsComponent {
     },
     {
       name: 'Lingerie sexy para noite de núpcias',
-      value: 50,
+      value: 80,
       image: 'assets/images/gifts/hello_kitty.png'
     },
     {
       name: '3 meses de Netflix para o casal',
-      value: 80,
+      value: 150,
       image: 'assets/images/gifts/png-clipart-netflix-full-logo-tech-companies-thumbnail-removebg-preview.png'
     },
     {
       name: 'Poder escolher a playlist na casa dos noivos',
-      value: 1500,
+      value: 400,
       image: 'assets/images/gifts/spotify.png'
     },
     {

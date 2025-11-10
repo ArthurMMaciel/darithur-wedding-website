@@ -13,10 +13,10 @@ export class RecommendationsComponent {
 
   genders = {
     male: {
-      description: 'Sugerimos traje social esporte fino para os homens. Sapatos sociais bem engraxados completam o visual.'
+      description: 'Sugerimos traje social ou esporte fino para os homens.'
     },
     female: {
-      description: 'Para as mulheres, sugerimos vestidos longos ou midi. Sandálias ou sapatos de salto médio a alto pois o casamento acontece em salão e uma bolsa de mão complementam o look.'
+      description: 'Para as mulheres, sugerimos vestidos mais longos e sociais.'
     }
   };
 
