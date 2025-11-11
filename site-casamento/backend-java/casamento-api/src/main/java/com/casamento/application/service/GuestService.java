@@ -45,7 +45,7 @@ public class GuestService {
 
     @Transactional
     public void confirmPresence(GuestsToConfirmDTO guestsToConfirm) {
-        ArrayList<BigInteger> guestsToConfirmIds = guestsToConfirm.getGuestsToConfirmIds();
+        String guestsToConfirmIds = guestsToConfirm.getGuestsToConfirmIds();
         String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
         String guestHeaderPhone = guestsToConfirm.getGuestHeaderPhone();
 

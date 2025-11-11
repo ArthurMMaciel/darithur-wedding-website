@@ -16,57 +16,62 @@ public class WebhookWhatsappPublisher {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    @Value("${evolution.api.base-url:http://localhost:8080}")
-    private String baseUrl;
+    // Base do WPP Connector, ex.: http://64.225.13.52:21465/api/casamento
+    @Value("${wpp.connector.base-url:http://localhost:21465/api/casamento}")
+    private String connectorBaseUrl;
 
-    @Value("${evolution.api.key:}")
-    private String apiKey;
-
-    @Value("${evolution.instance:default}")
-    private String instance;
-
+    // Reaproveita a env do grupo já existente
     @Value("${evolution.group.id:}")
     private String groupId;
 
     public void sendToGroup(String message) {
         try {
-            String url = String.format("%s/message/sendText/%s", baseUrl, instance);
+            String url = connectorBaseUrl + "/send-message";
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.set("apikey", apiKey);
 
             Map<String, Object> payload = Map.of(
-                    "number", groupId,
-                    "text", message
+                    "phone", groupId,
+                    "isGroup", true,
+                    "message", message
             );
 
             restTemplate.postForEntity(url, new HttpEntity<>(payload, headers), String.class);
-            System.out.println("✅ Mensagem enviada para grupo via Evolution API");
+            System.out.println("Mensagem enviada para grupo via WPP Connector");
         } catch (Exception e) {
-            System.err.println("❌ Falha ao enviar mensagem para grupo: " + e.getMessage());
+            System.err.println("Falha ao enviar mensagem para grupo: " + e.getMessage());
         }
     }
 
     public void sendToGuest(String phone, String message) {
         try {
-            String url = String.format("%s/message/sendText/%s", baseUrl, instance);
+            String url = connectorBaseUrl + "/send-message";
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.set("apikey", apiKey);
 
-            String remoteJid = phone + "@s.whatsapp.net";
+            String normalized = normalizeE164(phone);
 
             Map<String, Object> payload = Map.of(
-                    "number", remoteJid,
-                    "text", message
+                    "phone", normalized,
+                    "isGroup", false,
+                    "message", message
             );
 
             restTemplate.postForEntity(url, new HttpEntity<>(payload, headers), String.class);
-            System.out.println("✅ Mensagem enviada para convidado via Evolution API");
+            System.out.println("Mensagem enviada para convidado via WPP Connector");
         } catch (Exception e) {
-            System.err.println("❌ Falha ao enviar mensagem para convidado: " + e.getMessage());
+            System.err.println("Falha ao enviar mensagem para convidado: " + e.getMessage());
         }
     }
+
+    private String normalizeE164(String phone) {
+        if (phone == null) return "";
+        String digits = phone.replaceAll("\\D", "");
+        if (phone.startsWith("+")) return "+" + digits;
+        if (digits.startsWith("55")) return digits;
+        return "55" + digits;
+    }
 }
+

@@ -88,7 +88,7 @@ export class GiftsComponent {
     {
       name: 'Ração premium para Sukita',
       value: 350,
-      image: 'assets/images/gifts/sukita_racao.png'
+      image: 'assets/images/gifts/racao.png'
     },
     {
       name: 'Perguntar sobre filhos',
@@ -99,7 +99,7 @@ export class GiftsComponent {
     {
       name: 'Brinquedo novo para Sukita não morder os móveis novos',
       value: 100,
-      image: 'assets/images/gifts/sukita_brinquedo.png'
+      image: 'assets/images/gifts/brinquedos.png'
     },
     {
       name: 'Fundo emergencial de doces para tpm',
