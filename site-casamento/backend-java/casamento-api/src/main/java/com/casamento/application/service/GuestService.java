@@ -49,8 +49,6 @@ public class GuestService {
         String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
         String guestHeaderPhone = guestsToConfirm.getGuestHeaderPhone();
 
-        this.repository.updateGuestConfirmedById(guestsToConfirmIds);
-
         List<String> guestsNames = this.repository.getGuestNameById(guestsToConfirmIds);
 
         String headerName = guestsToConfirm.getGuestHeaderName();
@@ -64,8 +62,12 @@ public class GuestService {
                                          companionsNames,
                                          guestsNames.size());
 
+        // Primeiro tenta enviar (email + WhatsApp). Se falhar, lança exceção e a transação é revertida
         this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
         this.sendCoupleConfirmPresenceMessage(msgCouple);
+
+        // Só marca como confirmados após sucesso dos envios
+        this.repository.updateGuestConfirmedById(guestsToConfirmIds);
     }
 
     private List<Long> parseIds(String raw) {

@@ -144,7 +144,7 @@ export class RsvpComponent implements OnInit {
         this.searchText = '';
         this.showGuestSuggestions = false;
         this.fetchInitialGuests();
-        this.showToast('Presença confirmada com sucesso!', 'success');
+        this.showToast('Convidados confirmados com sucesso', 'success');
       },
       error: () => {
         this.submitting = false;

@@ -37,10 +37,14 @@ public class WebhookWhatsappPublisher {
                     "message", message
             );
 
-            restTemplate.postForEntity(url, new HttpEntity<>(payload, headers), String.class);
+            var resp = restTemplate.postForEntity(url, new HttpEntity<>(payload, headers), String.class);
+            if (!resp.getStatusCode().is2xxSuccessful()) {
+                throw new RuntimeException("WPP Connector HTTP " + resp.getStatusCode());
+            }
             System.out.println("Mensagem enviada para grupo via WPP Connector");
         } catch (Exception e) {
             System.err.println("Falha ao enviar mensagem para grupo: " + e.getMessage());
+            throw new RuntimeException("Falha ao enviar WhatsApp para grupo", e);
         }
     }
 
@@ -59,10 +63,14 @@ public class WebhookWhatsappPublisher {
                     "message", message
             );
 
-            restTemplate.postForEntity(url, new HttpEntity<>(payload, headers), String.class);
+            var resp = restTemplate.postForEntity(url, new HttpEntity<>(payload, headers), String.class);
+            if (!resp.getStatusCode().is2xxSuccessful()) {
+                throw new RuntimeException("WPP Connector HTTP " + resp.getStatusCode());
+            }
             System.out.println("Mensagem enviada para convidado via WPP Connector");
         } catch (Exception e) {
             System.err.println("Falha ao enviar mensagem para convidado: " + e.getMessage());
+            throw new RuntimeException("Falha ao enviar WhatsApp para convidado", e);
         }
     }
 
@@ -74,4 +82,3 @@ public class WebhookWhatsappPublisher {
         return "55" + digits;
     }
 }
-

@@ -42,11 +42,14 @@ public class SendgridEmailPublisher implements EmailPublisher {
                     "content", List.of(Map.of("type", "text/plain", "value", job.getText()))
             );
 
-            rest.postForEntity("https://api.sendgrid.com/v3/mail/send", new HttpEntity<>(body, headers), String.class);
+            var resp = rest.postForEntity("https://api.sendgrid.com/v3/mail/send", new HttpEntity<>(body, headers), String.class);
+            if (!resp.getStatusCode().is2xxSuccessful()) {
+                throw new RuntimeException("SendGrid HTTP " + resp.getStatusCode());
+            }
             log.info("[Sendgrid] Email enviado para {}", job.getTo());
         } catch (Exception e) {
             log.error("[Sendgrid] Falha ao enviar e-mail: {}", e.getMessage());
+            throw new RuntimeException("Falha ao enviar e-mail", e);
         }
     }
 }
-
