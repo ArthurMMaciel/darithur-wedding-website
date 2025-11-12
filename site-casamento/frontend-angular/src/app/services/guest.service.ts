@@ -13,7 +13,7 @@ export interface Guest {
 }
 
 export interface GuestsToConfirmDto {
-  guestsToConfirmIds: string; 
+  guestsToConfirmIds: number[]; 
   guestHeaderEmail: string;
   guestHeaderPhone: string;
   guestHeaderName: string;

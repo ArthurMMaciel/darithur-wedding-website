@@ -128,7 +128,7 @@ export class RsvpComponent implements OnInit {
 
     const ids: number[] = [this.selectedGuest.id, ...this.companions.filter(c => c.isSelected).map(c => c.id)];
     const payload: GuestsToConfirmDto = {
-      guestsToConfirmIds: ids.join(','),
+      guestsToConfirmIds: ids,
       guestHeaderEmail: this.email,
       guestHeaderPhone: phoneDigits,
       guestHeaderName: this.selectedGuest.name

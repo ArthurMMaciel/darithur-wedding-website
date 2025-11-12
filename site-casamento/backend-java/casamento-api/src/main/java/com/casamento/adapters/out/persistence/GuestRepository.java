@@ -29,16 +29,9 @@ public interface GuestRepository extends JpaRepository<Guest, Long> {
     List<Guest> searchAllNonConfirmedGuestsByName(@Param("namePart") String namePart);
 
     @Modifying
-    @Transactional
-    @Query(nativeQuery = true,
-            value = " UPDATE guest g " +
-                    " SET confirmed = true " +
-                    " WHERE g.id IN (:guestsToConfirmIds) ")
-    void updateGuestConfirmedById(@Param("guestsToConfirmIds") String guestsToConfirmIds);
+    @Query("UPDATE Guest g SET g.confirmed = true WHERE g.id IN :ids")
+    void updateGuestConfirmedById(@Param("ids") List<Long> ids);
 
-    @Query(nativeQuery = true,
-            value = " SELECT g.name " +
-                    " FROM guest g " +
-                    " WHERE g.id IN (:guestsToConfirmIds) ")
-    List<String> getGuestNameById(@Param("guestsToConfirmIds") String guestsToConfirmIds);
+    @Query("SELECT g.name FROM Guest g WHERE g.id IN :ids")
+    List<String> getGuestNameById(@Param("ids") List<Long> ids);
 }

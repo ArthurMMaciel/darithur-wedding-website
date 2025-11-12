@@ -49,9 +49,10 @@ public class GuestService {
         String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
         String guestHeaderPhone = guestsToConfirm.getGuestHeaderPhone();
 
-        this.repository.updateGuestConfirmedById(guestsToConfirmIds);
+        List<Long> idList = parseIds(guestsToConfirmIds);
+        this.repository.updateGuestConfirmedById(idList);
 
-        List<String> guestsNames = this.repository.getGuestNameById(guestsToConfirmIds);
+        List<String> guestsNames = this.repository.getGuestNameById(idList);
 
         String headerName = guestsToConfirm.getGuestHeaderName();
         String companionsNames = formatCompanionsNames(guestsNames, headerName);
@@ -66,6 +67,19 @@ public class GuestService {
 
         this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
         this.sendCoupleConfirmPresenceMessage(msgCouple);
+    }
+
+    private List<Long> parseIds(String raw) {
+        if (raw == null || raw.isBlank()) return List.of();
+        String[] parts = raw.split("[,;\\s]+");
+        return java.util.Arrays.stream(parts)
+                .filter(p -> p != null && !p.isBlank())
+                .map(String::trim)
+                .map(s -> {
+                    try { return Long.valueOf(s); } catch (NumberFormatException e) { return null; }
+                })
+                .filter(java.util.Objects::nonNull)
+                .toList();
     }
 
     private String formatCompanionsNames(List<String> guestsNames, String headerName) {
