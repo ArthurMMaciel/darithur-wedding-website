@@ -45,14 +45,13 @@ public class GuestService {
 
     @Transactional
     public void confirmPresence(GuestsToConfirmDTO guestsToConfirm) {
-        String guestsToConfirmIds = guestsToConfirm.getGuestsToConfirmIds();
+        List<Long> guestsToConfirmIds = guestsToConfirm.getGuestsToConfirmIds();
         String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
         String guestHeaderPhone = guestsToConfirm.getGuestHeaderPhone();
 
-        List<Long> idList = parseIds(guestsToConfirmIds);
-        this.repository.updateGuestConfirmedById(idList);
+        this.repository.updateGuestConfirmedById(guestsToConfirmIds);
 
-        List<String> guestsNames = this.repository.getGuestNameById(idList);
+        List<String> guestsNames = this.repository.getGuestNameById(guestsToConfirmIds);
 
         String headerName = guestsToConfirm.getGuestHeaderName();
         String companionsNames = formatCompanionsNames(guestsNames, headerName);
