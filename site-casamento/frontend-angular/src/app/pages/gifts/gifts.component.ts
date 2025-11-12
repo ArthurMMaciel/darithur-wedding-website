@@ -88,7 +88,7 @@ export class GiftsComponent {
     {
       name: 'Ração premium para Sukita',
       value: 350,
-      image: 'assets/images/gifts/racao.png'
+      image: 'assets/images/gifts/racao_oficial.png'
     },
     {
       name: 'Perguntar sobre filhos',
