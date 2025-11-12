@@ -16,11 +16,9 @@ public class WebhookWhatsappPublisher {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    // Base do WPP Connector, ex.: http://64.225.13.52:21465/api/casamento
-    @Value("${wpp.connector.base-url:http://localhost:21465/api/casamento}")
+    @Value("${wpp.connector.base-url:http://64.225.13.52:21465/api/casamento}")
     private String connectorBaseUrl;
 
-    // Reaproveita a env do grupo já existente
     @Value("${evolution.group.id:}")
     private String groupId;
 

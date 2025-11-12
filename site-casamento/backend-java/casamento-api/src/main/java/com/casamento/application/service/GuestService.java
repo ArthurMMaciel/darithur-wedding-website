@@ -108,15 +108,7 @@ public class GuestService {
                 Map.of("kind", "RSVP_CONFIRMATION", "target", "guest")
         );
         emailPublisher.publish(emailJob);
-
-        String normalizedGuestPhone = normalizeE164(guestPhone);
-        webhookWhatsappPublisher.sendToGuest(normalizedGuestPhone, msgGuest);
-    }
-
-    private String normalizeE164(String phone) {
-        String digits = phone.replaceAll("\\D", "");
-        if (phone.startsWith("+")) return "+" + digits;
-        return "55" + digits;
+        webhookWhatsappPublisher.sendToGuest(guestPhone, msgGuest);
     }
 
     private void sendCoupleConfirmPresenceMessage(String msgCouple) {
