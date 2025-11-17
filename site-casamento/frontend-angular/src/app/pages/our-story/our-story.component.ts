@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 export class OurStoryComponent {
   leftImages = [
     'assets/images/gallery/arthur-dari-06.jpg',
-    'assets/images/gallery/arthur-dari-06.jpg',
+    'assets/images/gallery/Arthur e Dari-04.jpg',
     'assets/images/gallery/arthur-dari-06.jpg',
     'assets/images/gallery/arthur-dari-06.jpg',
     'assets/images/gallery/arthur-dari-06.jpg'

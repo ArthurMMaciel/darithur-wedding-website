@@ -62,11 +62,9 @@ public class GuestService {
                                          companionsNames,
                                          guestsNames.size());
 
-        // Primeiro tenta enviar (email + WhatsApp). Se falhar, lança exceção e a transação é revertida
         this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
         this.sendCoupleConfirmPresenceMessage(msgCouple);
 
-        // Só marca como confirmados após sucesso dos envios
         this.repository.updateGuestConfirmedById(guestsToConfirmIds);
     }
 
@@ -108,7 +106,8 @@ public class GuestService {
                 Map.of("kind", "RSVP_CONFIRMATION", "target", "guest")
         );
         emailPublisher.publish(emailJob);
-        webhookWhatsappPublisher.sendToGuest(guestPhone, msgGuest);
+        //Caso conseguir subir Evolution, descomentar
+        //webhookWhatsappPublisher.sendToGuest(guestPhone, msgGuest);
     }
 
     private void sendCoupleConfirmPresenceMessage(String msgCouple) {
@@ -120,6 +119,7 @@ public class GuestService {
                 Map.of("kind", "RSVP_CONFIRMATION", "target", "couple")
         );
         emailPublisher.publish(emailJob);
-        webhookWhatsappPublisher.sendToGroup(msgCouple);
+        //Caso conseguir subir Evolution, descomentar
+        //webhookWhatsappPublisher.sendToGroup(msgCouple);
     }
 }
