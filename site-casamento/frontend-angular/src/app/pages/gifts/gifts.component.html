@@ -19,7 +19,9 @@
     </ng-container>
   </div>
 
-  <div *ngIf="activeTab === 'standard'" class="gift-standard">
+  <div *ngIf="activeTab === 'standard'"
+       class="gift-standard"
+       [ngClass]="{ 'single': standardGifts.length === 1 }">
     <div class="gift-card" *ngFor="let gift of standardGifts">
       <img [src]="gift.image" />
       <p class="description">{{ gift.name }}</p>

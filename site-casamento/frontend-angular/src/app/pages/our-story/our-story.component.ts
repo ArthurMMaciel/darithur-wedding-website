@@ -10,19 +10,13 @@ import { Component } from '@angular/core';
 })
 export class OurStoryComponent {
   leftImages = [
-    'assets/images/gallery/arthur-dari-06.jpg',
-    'assets/images/gallery/Arthur e Dari-04.jpg',
-    'assets/images/gallery/IMG_7900.jpg',
-    'assets/images/gallery/arthur-dari-06.jpg',
-    'assets/images/gallery/arthur-dari-06.jpg'
+    'assets/images/gallery/Arthur e Dari-20.jpg',
+    'assets/images/gallery/IMG_7900.jpg'
   ];
 
   rightImages = [
-    'assets/images/gallery/arthur-dari-06.jpg',
-    'assets/images/gallery/arthur-dari-06.jpg',
-    'assets/images/gallery/arthur-dari-06.jpg',
-    'assets/images/gallery/arthur-dari-06.jpg',
-    'assets/images/gallery/arthur-dari-06.jpg'
+    'assets/images/gallery/IMG_5013.png',
+    'assets/images/gallery/Arthur e Dari-39.jpg',
   ];
   
   storyText: string = `

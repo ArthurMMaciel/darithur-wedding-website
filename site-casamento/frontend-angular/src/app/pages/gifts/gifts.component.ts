@@ -78,7 +78,7 @@ export class GiftsComponent {
     {
       name: 'Maquiagem de blogueira para a noiva',
       value: 200,
-      image: 'assets/images/gifts/camila_pudim.png'
+      image: 'assets/images/gifts/maquiagens.png'
     },
     {
       name: 'Meia superfaturada para noiva não passar frio de noite',
@@ -88,7 +88,7 @@ export class GiftsComponent {
     {
       name: 'Ração premium para Sukita',
       value: 350,
-      image: 'assets/images/gifts/racao_oficial.png'
+      image: 'assets/images/gifts/racao_oficial_sukita.png'
     },
     {
       name: 'Perguntar sobre filhos',

@@ -11,8 +11,8 @@ import { FormsModule } from '@angular/forms';
 export class GalleryCarouselComponent {
     @Input() images: string[] = [];
 
-    photosPerPageOptions = [2, 3, 4, 8, 12];
-    photosPerPage: number = 3;
+    photosPerPageOptions = [1, 2, 3, 6];
+    photosPerPage: number = 2;
     currentPage = 0;
     visibleImages: string[] = [];
 

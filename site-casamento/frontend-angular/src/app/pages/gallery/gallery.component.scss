@@ -1,6 +1,6 @@
 .gallery {
   background-color: var(--olive);
-  padding: 4rem 1rem;
+  padding: 6rem 1rem 4rem;
   text-align: center;
   min-height: 55vh;
 
@@ -25,7 +25,7 @@
 
     img {
       min-width: 100%;
-      height: auto;
+      min-height: 500px;
       object-fit: cover;
     }
   }
