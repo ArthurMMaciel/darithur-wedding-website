@@ -14,18 +14,21 @@ public interface GuestRepository extends JpaRepository<Guest, Long> {
     @Query(nativeQuery = true,
             value = " SELECT * FROM guest g " +
                     " WHERE g.confirmed IS FALSE " +
-                    " AND g.group_code = :groupCode ")
+                    " AND g.group_code = :groupCode " +
+                    " ORDER BY g.name ASC ")
     List<Guest> findAllNonConfirmedGuestsByGroupCode(@Param("groupCode") String groupCode);
 
     @Query(nativeQuery = true,
     value = " SELECT * FROM guest g " +
-            " WHERE g.confirmed IS FALSE ")
+            " WHERE g.confirmed IS FALSE " +
+            " ORDER BY g.name ASC ")
     List<Guest> getAllNonConfirmedGuests();
 
     @Query(nativeQuery = true,
             value = " SELECT * FROM guest g " +
                     " WHERE g.confirmed IS FALSE " +
-                    " AND LOWER(g.name) LIKE LOWER(CONCAT('%', :namePart, '%'))")
+                    " AND LOWER(g.name) LIKE LOWER(CONCAT('%', :namePart, '%')) " +
+                    " ORDER BY g.name ASC ")
     List<Guest> searchAllNonConfirmedGuestsByName(@Param("namePart") String namePart);
 
     @Modifying
