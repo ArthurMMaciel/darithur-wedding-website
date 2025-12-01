@@ -29,6 +29,8 @@ public class SendgridEmailPublisher implements EmailPublisher {
     @Override
     public void publish(EmailJob job) {
         try {
+            log.info("[Sendgrid] API KEY recebida pelo Spring: '{}'", apiKey);
+            log.info("[Sendgrid] From configurado: '{}'", from);
             HttpHeaders headers = new HttpHeaders();
             headers.setBearerAuth(apiKey);
             headers.setContentType(MediaType.APPLICATION_JSON);
