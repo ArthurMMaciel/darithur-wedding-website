@@ -5,7 +5,6 @@ import com.casamento.adapters.out.persistence.EmailPublisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -16,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-@ConditionalOnExpression("'${app.rabbit.enabled:false}' == 'false' and !'${sendgrid.api.key:}'.isEmpty()")
 public class SendgridEmailPublisher implements EmailPublisher {
     private static final Logger log = LoggerFactory.getLogger(SendgridEmailPublisher.class);
 
