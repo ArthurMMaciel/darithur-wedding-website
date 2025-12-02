@@ -46,24 +46,24 @@ public class GuestService {
     @Transactional
     public void confirmPresence(GuestsToConfirmDTO guestsToConfirm) {
         List<Long> guestsToConfirmIds = guestsToConfirm.getGuestsToConfirmIds();
-        String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
-        String guestHeaderPhone = guestsToConfirm.getGuestHeaderPhone();
+        //String guestHeaderEmail = guestsToConfirm.getGuestHeaderEmail();
+        //String guestHeaderPhone = guestsToConfirm.getGuestHeaderPhone();
 
-        List<String> guestsNames = this.repository.getGuestNameById(guestsToConfirmIds);
+        //List<String> guestsNames = this.repository.getGuestNameById(guestsToConfirmIds);
 
-        String headerName = guestsToConfirm.getGuestHeaderName();
-        String companionsNames = formatCompanionsNames(guestsNames, headerName);
+        //String headerName = guestsToConfirm.getGuestHeaderName();
+        //String companionsNames = formatCompanionsNames(guestsNames, headerName);
 
-        String msgGuest = String.format(ConfirmationMessageTemplate.GUEST.getTemplate(), headerName, companionsNames);
-        String msgCouple = String.format(ConfirmationMessageTemplate.COUPLE.getTemplate(),
-                                         headerName,
-                                         guestHeaderEmail,
-                                         guestHeaderPhone,
-                                         companionsNames,
-                                         guestsNames.size());
+        //String msgGuest = String.format(ConfirmationMessageTemplate.GUEST.getTemplate(), headerName, companionsNames);
+        //String msgCouple = String.format(ConfirmationMessageTemplate.COUPLE.getTemplate(),
+                                         //headerName,
+                                         //guestHeaderEmail,
+                                         //guestHeaderPhone,
+                                         //companionsNames,
+                                         //guestsNames.size());
 
-        this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
-        this.sendCoupleConfirmPresenceMessage(msgCouple);
+        //this.sendGuestConfirmPresenceMessage(msgGuest, guestHeaderEmail, guestHeaderPhone);
+        //this.sendCoupleConfirmPresenceMessage(msgCouple);
 
         this.repository.updateGuestConfirmedById(guestsToConfirmIds);
     }
