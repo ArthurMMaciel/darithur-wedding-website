@@ -17,7 +17,7 @@ export class GiftsComponent {
   personalizedGifts = [
     {
       name: 'Relógio para o casal não se atrasar mais nos compromissos',
-      value: 150,
+      value: 300,
       image: 'assets/images/gifts/relogio.png'
     },
     {
@@ -27,12 +27,12 @@ export class GiftsComponent {
     },
     {
       name: 'Cobertor para o noivo, porque a noiva já está coberta de razão',
-      value: 200,
+      value: 800,
       image: 'assets/images/gifts/banguela.png'
     },
     {
       name: 'Camiseta nova do Corinthians para o casal',
-      value: 200,
+      value: 500,
       image: 'assets/images/gifts/casal_curinthia.png'
     },
     {
