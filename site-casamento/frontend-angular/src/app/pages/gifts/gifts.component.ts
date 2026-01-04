@@ -10,7 +10,7 @@ import { PaymentModalComponent } from '../../modals/payment/payment-modal.compon
   styleUrl: './gifts.component.scss'
 })
 export class GiftsComponent {
-  activeTab: string = 'custom';
+  activeTab: string = 'standard';
   public showPaymentModal = false;
   public paymentRandomKey = '985d0270-473f-4d8b-89aa-06101b37d779';
 
