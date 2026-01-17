@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
+﻿import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Guest, GuestService, GuestsToConfirmDto } from '../../services/guest.service';
+import { Guest, GuestService } from '../../services/guest.service';
 import { ToastComponent } from '../../components/toast/toast.component';
 
 @Component({
@@ -17,9 +17,6 @@ export class RsvpComponent implements OnInit {
   searchText = '';
   showGuestSuggestions = false;
   companions: (Guest & { isSelected?: boolean })[] = [];
-
-  phone = '';
-  email = '';
 
   loadingGuests = false;
   loadingCompanions = false;
@@ -74,12 +71,10 @@ export class RsvpComponent implements OnInit {
     }
     this.searchText = this.selectedGuest.name;
     this.showGuestSuggestions = false;
-    this.phone = '';
-    this.email = '';
 
     this.loadingCompanions = true;
     this.guestService
-      .findAllNonConfirmedByGroupCode(this.selectedGuest.groupCode)
+      .findAllNonConfirmedByGroupCode(this.selectedGuest.group_code)
       .subscribe({
         next: (groupGuests) => {
           this.companions = groupGuests
@@ -110,37 +105,18 @@ export class RsvpComponent implements OnInit {
   }
 
   public submitRSVP(): void {
-    if (!this.selectedGuest || !this.phone || !this.email) {
-      this.showToast('Nome, telefone e email são obrigatórios.', 'error');
-      return;
-    }
-
-    if (!this.email.includes('@')) {
-      this.showToast('Email inválido. Deve conter @.', 'error');
-      return;
-    }
-
-    const phoneDigits = this.phone.replace(/\D/g, '');
-    if (!/^\d{11}$/.test(phoneDigits)) {
-      this.showToast('Telefone inválido. Use apenas números (11 dígitos).', 'error');
+    if (!this.selectedGuest) {
+      this.showToast('Selecione seu nome para continuar.', 'error');
       return;
     }
 
     const ids: number[] = [this.selectedGuest.id, ...this.companions.filter(c => c.isSelected).map(c => c.id)];
-    const payload: GuestsToConfirmDto = {
-      guestsToConfirmIds: ids,
-      guestHeaderEmail: this.email,
-      guestHeaderPhone: phoneDigits,
-      guestHeaderName: this.selectedGuest.name
-    };
 
     this.submitting = true;
-    this.guestService.confirmPresence(payload).subscribe({
+    this.guestService.confirmPresence(ids).subscribe({
       next: () => {
         this.selectedGuest = null;
         this.companions = [];
-        this.phone = '';
-        this.email = '';
         this.searchText = '';
         this.showGuestSuggestions = false;
         this.fetchInitialGuests();
@@ -152,12 +128,6 @@ export class RsvpComponent implements OnInit {
       },
       complete: () => (this.submitting = false)
     });
-  }
-
-  public onPhoneInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    const digitsOnly = input.value.replace(/\D/g, '');
-    this.phone = digitsOnly.slice(0, 11);
   }
 
   private showToast(message: string, type: 'success' | 'error' | 'info' = 'info') {

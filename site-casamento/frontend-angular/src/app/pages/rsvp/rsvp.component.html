@@ -1,9 +1,9 @@
-<section id="rsvp" class="rsvp-section">
+﻿<section id="rsvp" class="rsvp-section">
   <a class="rsvp-title">Confirmar presença</a>
   <div class="rsvp-container">
     <form class="rsvp-form">
       <div class="form-group">
-        <label for="guestName">Nome*</label>
+        <label for="guestName">Nome (será confirmado junto com os acompanhantes caso tenha)</label>
         <input id="guestName" class="select-input" type="text" [value]="searchText" (input)="onSearchInput($event)"
           (focus)="showGuestSuggestions = true" (blur)="onGuestInputBlur()" placeholder="Digite para buscar seu nome" autocomplete="off" />
         <div class="suggestions" *ngIf="showGuestSuggestions">
@@ -16,21 +16,8 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="phone" style="margin-top: 5px;">Telefone*</label>
-        <input style="background-color: var(--cream); margin-top: 2px; border: 1px solid var(--terracotta);" type="tel"
-          id="phone" name="phone" [(ngModel)]="phone" (input)="onPhoneInput($event)" inputmode="numeric" pattern="\\d*"
-          maxlength="11" placeholder="Digite seu telefone" required />
-      </div>
-
-      <div class="form-group">
-        <label for="email" style="margin-top: 5px;">Email*</label>
-        <input style="background-color: var(--cream); margin-top: 2px; border: 1px solid var(--terracotta);" type="email"
-          id="email" name="email" [(ngModel)]="email" placeholder="Digite seu email" required />
-      </div>
-
       <button class="rsvp-button" type="button" (click)="submitRSVP()" style="margin-top: 10px;">
-        {{ submitting ? 'Enviando...' : 'Confirmar Presença' }}
+        {{ submitting ? 'Enviando...' : 'Confirmar presença' }}
       </button>
     </form>
 

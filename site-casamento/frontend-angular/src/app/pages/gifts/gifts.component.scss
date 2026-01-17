@@ -1,11 +1,11 @@
 .gifts-section {
-  background-color: var(--cream);
+  background-color: var(--olive);
   padding: 3rem 1rem;
   text-align: center;
 
   .gifts-title {
     font-size: clamp(2rem, 6vw, 3.5rem);
-    color: var(--olive);
+    color: var(--cream);
     margin-bottom: 2rem;
     text-decoration: none;
   }
@@ -46,8 +46,8 @@
   }
 
   .gift-card {
-    background-color: var(--olive);
-    color: var(--cream);
+    background-color: var(--terracotta);
+    color: var(--olive);
     border: 1px solid var(--terracotta);
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -90,10 +90,10 @@
     }
 
     button {
-      background-color: var(--terracotta);
-      color: var(--olive);
+      background-color: var(--olive);
+      color: var(--terracotta);
       padding: 0.5rem 1.5rem;
-      border: 1px solid var(--terracotta);
+      border: 1px solid var(--olive);
       border-radius: 5px;
       font-weight: bold;
       cursor: pointer;

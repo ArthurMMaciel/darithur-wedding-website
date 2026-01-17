@@ -5,6 +5,9 @@ Thumbs.db
 # Environment files
 .env
 **/.env
+.env.local
+**/.env.local
+frontend-angular/src/assets/env.js
 
 # Keep example env files tracked
 !.env.example

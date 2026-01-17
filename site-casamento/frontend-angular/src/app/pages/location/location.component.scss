@@ -1,6 +1,6 @@
 .location-section {
   padding: 2rem;
-  background: var(--olive);
+  background: var(--cream);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,8 @@
       border-color: var(--terracotta);
       padding: 0.5rem 1.5rem;
       border-radius: 5px;
-      font-weight: bold;color: var(--olive);
+      font-weight: bold;
+      color: var(--olive);
       height: 1.5rem;
       width: 8rem;
       align-items: center;
@@ -51,19 +52,19 @@
 
 .location-title{
   font-size: clamp(2rem, 6vw, 3.5rem);
-  color: var(--cream);
+  color: var(--olive);
   text-decoration: none;
 }
 
 .location-address {
   font-size: 1.3rem;
-  color: var(--cream);
+  color: var(--olive);
   font-style: italic;
 }
 
 .location-description {
   font-size: clamp(0.9rem, 2.5vw, 1rem);
-  color: var(--cream);
+  color: var(--olive);
   margin-top: 30px;
 }
 

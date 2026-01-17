@@ -1,44 +1,57 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { API_BASE_URL } from '../config/api.config';
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from '../config/supabase.config';
 
 export interface Guest {
   id: number;
   name: string;
   confirmed: boolean;
-  email: string;
-  phoneNumber: string;
-  groupCode: string;
-}
-
-export interface GuestsToConfirmDto {
-  guestsToConfirmIds: number[]; 
-  guestHeaderEmail: string;
-  guestHeaderPhone: string;
-  guestHeaderName: string;
+  group_code: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class GuestService {
-  private readonly apiBase = API_BASE_URL;
+  private readonly restBase: string;
+  private readonly functionsBase: string;
+  private readonly headers: HttpHeaders;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+      throw new Error('Missing Supabase config (NG_APP_SUPABASE_URL / NG_APP_SUPABASE_ANON_KEY).');
+    }
+    this.restBase = `${SUPABASE_URL}/rest/v1`;
+    this.functionsBase = `${SUPABASE_URL}/functions/v1`;
+    this.headers = new HttpHeaders({
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`
+    });
+  }
 
   public getAllNonConfirmed(): Observable<Guest[]> {
-    return this.http.get<Guest[]>(`${this.apiBase}/guests/get-all-non-confirmed-guests`);
+    const params = new HttpParams()
+      .set('select', '*')
+      .set('order', 'name.asc');
+    return this.http.get<Guest[]>(`${this.restBase}/guest`, { headers: this.headers, params });
   }
 
   public searchNonConfirmedByName(name: string): Observable<Guest[]> {
-    const params = new HttpParams().set('name', name);
-    return this.http.get<Guest[]>(`${this.apiBase}/guests/search-non-confirmed`, { params });
+    const params = new HttpParams()
+      .set('select', '*')
+      .set('order', 'name.asc')
+      .set('name', `ilike.*${name}*`);
+    return this.http.get<Guest[]>(`${this.restBase}/guest`, { headers: this.headers, params });
   }
 
   public findAllNonConfirmedByGroupCode(groupCode: string): Observable<Guest[]> {
-    return this.http.get<Guest[]>(`${this.apiBase}/guests/find-all-non-confirmed-guests-by-group-code/${encodeURIComponent(groupCode)}`);
+    const params = new HttpParams()
+      .set('select', '*')
+      .set('order', 'name.asc')
+      .set('group_code', `eq.${groupCode}`);
+    return this.http.get<Guest[]>(`${this.restBase}/guest`, { headers: this.headers, params });
   }
 
-  public confirmPresence(payload: GuestsToConfirmDto): Observable<void> {
-    return this.http.post<void>(`${this.apiBase}/guests/confirm-presence`, payload);
+  public confirmPresence(guestIds: number[]): Observable<void> {
+    return this.http.post<void>(`${this.functionsBase}/confirm-presence`, { guestIds }, { headers: this.headers });
   }
 }
