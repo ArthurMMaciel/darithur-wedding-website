@@ -10,13 +10,13 @@ import { Component } from '@angular/core';
 })
 export class OurStoryComponent {
   leftImages = [
-    'assets/images/gallery/Arthur e Dari-20.jpg',
-    'assets/images/gallery/IMG_7900.jpg'
+    'assets/images/gallery/0063 - Pré Casamento.jpg',
+    'assets/images/gallery/0014 - Pré Casamento.jpg'
   ];
 
   rightImages = [
-    'assets/images/gallery/IMG_5013.png',
-    'assets/images/gallery/Arthur e Dari-39.jpg',
+    'assets/images/gallery/0153 - Pré Casamento.jpg',
+    'assets/images/gallery/0072 - Pré Casamento.jpg',
   ];
   
   storyText: string = `

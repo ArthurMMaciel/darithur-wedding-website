@@ -10,17 +10,11 @@ import { GalleryCarouselComponent } from '../../components/gallery-carousel/gall
 })
 export class GalleryComponent {
   galleryImages = [
-    'assets/images/gallery/arthur-dari-06.jpg',
-    //'assets/images/gallery/',
-    'assets/images/gallery/IMG_3819.png',
-    //'assets/images/gallery/',
-    //'assets/images/gallery/',
-    //'assets/images/gallery/',
-    //'assets/images/gallery/',
-    'assets/images/gallery/Arthur e Dari-53.jpg',
-    'assets/images/gallery/IMG_5825.png',
-    'assets/images/gallery/Arthur e Dari-64.jpg',
-    'assets/images/gallery/Arthur e Dari-69.jpg',
-    'assets/images/gallery/IMG_6222.jpg'
+    'assets/images/gallery/0055 - Pré Casamento.jpg',
+    'assets/images/gallery/0023 - Pré Casamento.jpg',
+    'assets/images/gallery/0105 - Pré Casamento.jpg',
+    'assets/images/gallery/0110 - Pré Casamento.jpg',
+    'assets/images/gallery/0117 - Pré Casamento.jpg',
+    'assets/images/gallery/0160 - Pré Casamento.jpg'
   ]
 }

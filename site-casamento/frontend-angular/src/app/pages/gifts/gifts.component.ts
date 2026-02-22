@@ -150,6 +150,31 @@ export class GiftsComponent {
       name: 'Ser nosso convidado favorito',
       value: 3000,
       image: 'assets/images/gifts/favorito.png'
+    },
+    {
+      name: 'Ser nosso convidado favorito',
+      value: 3000,
+      image: 'assets/images/gifts/favorito.png'
+    },
+    {
+      name: 'Ser nosso convidado favorito',
+      value: 3000,
+      image: 'assets/images/gifts/favorito.png'
+    },
+    {
+      name: 'Ser nosso convidado favorito',
+      value: 3000,
+      image: 'assets/images/gifts/favorito.png'
+    },
+    {
+      name: 'Ser nosso convidado favorito',
+      value: 3000,
+      image: 'assets/images/gifts/favorito.png'
+    },
+    {
+      name: 'Ser nosso convidado favorito',
+      value: 3000,
+      image: 'assets/images/gifts/favorito.png'
     }
   ];
 

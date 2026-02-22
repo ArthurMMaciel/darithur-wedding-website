@@ -37,6 +37,11 @@
       border: 2px solid var(--sage-green-light);
       border-radius: 8px;
     }
+
+    // Direita cima: mais borda direita visível
+    &.right img:nth-child(1) {
+      object-position: 85% center;
+    }
   }
 
   .story-content {

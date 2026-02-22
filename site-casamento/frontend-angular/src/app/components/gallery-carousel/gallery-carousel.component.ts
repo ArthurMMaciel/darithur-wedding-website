@@ -12,7 +12,7 @@ export class GalleryCarouselComponent {
     @Input() images: string[] = [];
 
     photosPerPageOptions = [1, 2, 3, 6];
-    photosPerPage: number = 2;
+    photosPerPage: number = 6;
     currentPage = 0;
     visibleImages: string[] = [];
 
