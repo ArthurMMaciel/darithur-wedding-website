@@ -1,16 +1,64 @@
-<section id="recommendation" class="recommendation-section">
+﻿<section id="recommendation" class="recommendation-section">
     <a class="recommendation-title">Recomendações</a>
 
     <div class="recommendation-tabs">
-        <button (click)="selectGender('male')" [class.active]="selectedGender === 'male'">Masculino</button>
-        <button (click)="selectGender('female')" [class.active]="selectedGender === 'female'">Feminino</button>
+        <button (click)="selectRecommendation('hotel')" [class.active]="selectedrecommendation === 'hotel'">Hotéis</button>
+        <button (click)="selectRecommendation('salon')" [class.active]="selectedrecommendation === 'salon'">Salões</button>
+        <button (click)="selectRecommendation('male')" [class.active]="selectedrecommendation === 'male'">Masculino</button>
+        <button (click)="selectRecommendation('female')" [class.active]="selectedrecommendation === 'female'">Feminino</button>
     </div>
 
-    <div class="recommendation-content">
-        <img [src]="recommendationImage" class="recommendation-image"/>
+    <div class="recommendation-subtabs" *ngIf="isHotelSelected">
+        <button
+            *ngFor="let hotel of hotels"
+            (click)="selectHotel(hotel.id)"
+            [class.active]="selectedHotelId === hotel.id">
+            {{ hotel.name }}
+        </button>
+    </div>
+
+    <div class="recommendation-subtabs" *ngIf="isSalonSelected">
+        <button
+            *ngFor="let salon of salons"
+            (click)="selectSalon(salon.id)"
+            [class.active]="selectedSalonId === salon.id">
+            {{ salon.name }}
+        </button>
+    </div>
+
+    <div class="recommendation-content" *ngIf="isFashionSelected">
+        <img [src]="recommendationImage" class="recommendation-image" alt="Recomendação de traje"/>
+    </div>
+
+    <div class="recommendation-card" *ngIf="isHotelSelected && selectedHotel as hotel">
+        <div class="recommendation-card-image">
+            <img [src]="hotel.image" [alt]="'Foto do hotel ' + hotel.name" loading="lazy"/>
+        </div>
+        <div class="recommendation-card-info">
+            <h3>{{ hotel.name }}</h3>
+            <p><span>Endereço:</span> {{ hotel.address }}</p>
+            <p><span>Telefone:</span> {{ hotel.phone }}</p>
+            <p><span>Diária base:</span> {{ hotel.baseRate }}</p>
+            <p><span>Proximidade:</span> {{ hotel.proximity }}</p>
+            <p class="recommendation-link">
+                <a [href]="hotel.bookingUrl" target="_blank" rel="noopener noreferrer">Booking.com</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="recommendation-card" *ngIf="isSalonSelected && selectedSalon as salon">
+        <div class="recommendation-card-image">
+            <img [src]="salon.image" [alt]="'Foto do salão ' + salon.name" loading="lazy"/>
+        </div>
+        <div class="recommendation-card-info">
+            <h3>{{ salon.name }}</h3>
+            <p><span>Endereço:</span> {{ salon.address }}</p>
+            <p><span>Telefone:</span> {{ salon.phone }}</p>
+            <p><span>Proximidade:</span> {{ salon.proximity }}</p>
+        </div>
     </div>
 
     <p class="recommendation-description">
-        {{ genders[selectedGender].description }}
+        {{ categoryDescriptions[selectedrecommendation].description }}
     </p>
 </section>
