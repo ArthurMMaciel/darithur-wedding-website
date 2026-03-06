@@ -152,29 +152,69 @@ export class GiftsComponent {
       image: 'assets/images/gifts/favorito.png'
     },
     {
-      name: 'Ser nosso convidado favorito',
-      value: 3000,
-      image: 'assets/images/gifts/favorito.png'
+      name: 'Vale-DR com lanche',
+      value: '59,90',
+      image: 'assets/images/gifts/vale-dr.png'
     },
     {
-      name: 'Ser nosso convidado favorito',
-      value: 3000,
-      image: 'assets/images/gifts/favorito.png'
+      name: 'Date improvisado',
+      value: '89,90',
+      image: 'assets/images/gifts/date-surpresa.png'
     },
     {
-      name: 'Ser nosso convidado favorito',
-      value: 3000,
-      image: 'assets/images/gifts/favorito.png'
+      name: 'Muay thai da noiva para não descontar a raiva no noivo',
+      value: '149,90',
+      image: 'assets/images/gifts/muay-thai.png'
     },
     {
-      name: 'Ser nosso convidado favorito',
-      value: 3000,
-      image: 'assets/images/gifts/favorito.png'
+      name: 'Dancinha TikTok com o casal',
+      value: '74,90',
+      image: 'assets/images/gifts/danca-tiktok.png'
     },
     {
-      name: 'Ser nosso convidado favorito',
-      value: 3000,
-      image: 'assets/images/gifts/favorito.png'
+      name: 'Patrocine a despedida do noivo',
+      value: '399,90',
+      image: 'assets/images/gifts/despedida-noivo.png'
+    },
+    {
+      name: 'Patrocine a despedida da noiva',
+      value: '399,90',
+      image: 'assets/images/gifts/despedida-noiva.png'
+    },
+    {
+      name: 'Melhor presente',
+      value: '7000',
+      image: 'assets/images/gifts/melhor-presente.png'
+    },
+    {
+      name: 'Lembrancinha da lua de mel',
+      value: '49,90',
+      image: 'assets/images/gifts/lembrancinha.png'
+    },
+    {
+      name: 'Vale visita surpresa',
+      value: '69,90',
+      image: 'assets/images/gifts/visita-surpresa.png'
+    },
+    {
+      name: 'Rolo de macarrão',
+      value: '44,99',
+      image: 'assets/images/gifts/rolo-macarrao.png'
+    },
+    {
+      name: 'Capacete contra rolo de macarrão',
+      value: '119.90',
+      image: 'assets/images/gifts/capacete-corinthians.png'
+    },
+    {
+      name: 'Mais horas de festa',
+      value: '2500',
+      image: 'assets/images/gifts/ajuda-extra.png'
+    },
+    {
+      name: 'Jogos para o casal',
+      value: '399.99',
+      image: 'assets/images/gifts/jogos-casal.png'
     }
   ];
 

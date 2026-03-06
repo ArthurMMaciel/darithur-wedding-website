@@ -8,10 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './recommendations.component.scss'
 })
 export class RecommendationsComponent {
-  selectedGender: 'male' | 'female' = 'female';
+  selectedrecommendation: 'male' | 'female' | 'salon' | 'hotel' = 'hotel';
   recommendationImage: string = '';
 
-  genders = {
+  recommendations = {
+    hotel: {
+      description: 'Sugerimos traje social ou esporte fino para os homens.'
+    },
+    salon: {
+      description: 'Para as mulheres, sugerimos vestidos mais longos e sociais.'
+    },
     male: {
       description: 'Sugerimos traje social ou esporte fino para os homens.'
     },
@@ -21,18 +27,22 @@ export class RecommendationsComponent {
   };
 
   ngOnInit() { 
-    this.loadRecommendation(this.selectedGender);
+    this.loadRecommendation(this.selectedrecommendation);
   }
 
-  public selectGender(gender: 'male' | 'female') {
-    this.selectedGender = gender;
-    this.loadRecommendation(gender);
+  public selectRecommendation(recommendation: 'male' | 'female' | 'salon' | 'hotel') {
+    this.selectedrecommendation = recommendation;
+    this.loadRecommendation(recommendation);
   }
 
-  public loadRecommendation(selectedGender: string) {
-    console.log(selectedGender);
-    
-    switch (selectedGender) {
+  public loadRecommendation(selectedrecommendation: string) {
+    switch (selectedrecommendation) {
+      case 'hotel':
+        this.recommendationImage = 'assets/images/recommendations/recomendacoes-homens.png';
+        break;
+      case 'salon':
+        this.recommendationImage = 'assets/images/recommendations/recomendacoes_convidadas.png';
+        break;
       case 'male':
         this.recommendationImage = 'assets/images/recommendations/recomendacoes-homens.png';
         break;

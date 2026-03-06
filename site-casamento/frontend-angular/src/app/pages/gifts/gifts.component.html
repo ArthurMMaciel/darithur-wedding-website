@@ -10,7 +10,7 @@
     <div class="gift-card" *ngFor="let gift of personalizedGifts">
       <img [src]="gift.image" />
       <div class="name">{{ gift.name }}</div>
-      <span class="value">R$ {{ gift.value }},00</span>
+      <span class="value">R$ {{ gift.value }}</span>
       <button (click)="openPaymentModal()"
               [disabled]="gift.available == false">{{ gift.available == false ? 'Indisponível' : 'Comprar' }}</button>
     </div>

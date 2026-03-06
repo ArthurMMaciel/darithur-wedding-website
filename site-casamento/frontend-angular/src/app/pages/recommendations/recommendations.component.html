@@ -2,8 +2,10 @@
     <a class="recommendation-title">Recomendações</a>
 
     <div class="recommendation-tabs">
-        <button (click)="selectGender('male')" [class.active]="selectedGender === 'male'">Masculino</button>
-        <button (click)="selectGender('female')" [class.active]="selectedGender === 'female'">Feminino</button>
+        <button (click)="selectRecommendation('hotel')" [class.active]="selectedrecommendation === 'hotel'">Hotéis</button>
+        <button (click)="selectRecommendation('salon')" [class.active]="selectedrecommendation === 'salon'">Salões</button>
+        <button (click)="selectRecommendation('male')" [class.active]="selectedrecommendation === 'male'">Masculino</button>
+        <button (click)="selectRecommendation('female')" [class.active]="selectedrecommendation === 'female'">Feminino</button>
     </div>
 
     <div class="recommendation-content">
@@ -11,6 +13,6 @@
     </div>
 
     <p class="recommendation-description">
-        {{ genders[selectedGender].description }}
+        {{ recommendations[selectedrecommendation].description }}
     </p>
 </section>
