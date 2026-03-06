@@ -17,138 +17,138 @@ export class GiftsComponent {
   personalizedGifts = [
     {
       name: 'Relógio para o casal não se atrasar mais nos compromissos',
-      value: 300,
+      value: '300,00',
       image: 'assets/images/gifts/relogio.png'
     },
     {
       name: 'Banho e tosa da Sukita por 1 ano',
-      value: 1500,
+      value: '1.500,00',
       image: 'assets/images/gifts/sukita_banho.jpeg'
     },
     {
       name: 'Cobertor para o noivo, porque a noiva já está coberta de razão',
-      value: 800,
+      value: '800,00',
       image: 'assets/images/gifts/banguela.png'
     },
     {
       name: 'Camiseta nova do Corinthians para o casal',
-      value: 500,
+      value: '500,00',
       image: 'assets/images/gifts/casal_curinthia.png'
     },
     {
       name: 'Café da manhã da lua de mel',
-      value: 300,
+      value: '300,00',
       image: 'assets/images/gifts/cafe.png'
     },
     {
       name: 'Passagem aérea da lua de mel',
-      value: 5000,
+      value: '5.000,00',
       image: 'assets/images/gifts/passagem_aérea.png'
     },
     {
       name: 'Passeio de bug na lua de mel',
-      value: 500,
+      value: '500,00',
       image: 'assets/images/gifts/bug_lua.png'
     },
     {
       name: 'Passeio de barco na lua de mel',
-      value: 500,
+      value: '500,00',
       image: 'assets/images/gifts/barco_lua.png'
     },
     {
       name: 'Tirolesa na lua de mel',
-      value: 150,
+      value: '150,00',
       image: 'assets/images/gifts/tirolesa_lua.png'
     },
     {
       name: 'Jantar romântico',
-      value: 300,
+      value: '300,00',
       image: 'assets/images/gifts/jantar.png'
     },
     {
       name: 'Vale para o noivo jogar bola todo mês',
-      value: 250,
+      value: '250,00',
       image: 'assets/images/gifts/arthur_bola.png'
     },
     {
       name: 'Preferência no quarto de visita',
-      value: 1000,
+      value: '1.000,00',
       image: 'assets/images/gifts/quarto_visita.png'
     },
     {
       name: 'Maquiagem de blogueira para a noiva',
-      value: 200,
+      value: '200,00',
       image: 'assets/images/gifts/maquiagens.png'
     },
     {
       name: 'Meia superfaturada para noiva não passar frio de noite',
-      value: 200,
+      value: '200,00',
       image: 'assets/images/gifts/meia_coelha.png'
     },
     {
       name: 'Ração premium para Sukita',
-      value: 350,
+      value: '350,00',
       image: 'assets/images/gifts/racao_oficial_sukita.png'
     },
     {
       name: 'Perguntar sobre filhos',
-      value: 1000,
+      value: '1.000,00',
       image: 'assets/images/gifts/filhoss.png',
       available: false
     },
     {
       name: 'Brinquedo novo para Sukita não morder os móveis novos',
-      value: 100,
+      value: '100,00',
       image: 'assets/images/gifts/brinquedos.png'
     },
     {
       name: 'Fundo emergencial de doces para tpm',
-      value: 800,
+      value: '800,00',
       image: 'assets/images/gifts/doces_tpm.jpg'
     },
     {
       name: 'Toma aqui uns 50 reais',
-      value: 50,
+      value: '50,00',
       image: 'assets/images/gifts/50_reais.jpg'
     },
     {
       name: 'Só pra não dizer que eu não dei nada',
-      value: 33,
+      value: '33,00',
       image: 'assets/images/gifts/nada.png'
     },
     {
       name: 'Cueca sexy para noite de núpcias',
-      value: 35,
+      value: '35,00',
       image: 'assets/images/gifts/cueca_batman.png'
     },
     {
       name: 'Lingerie sexy para noite de núpcias',
-      value: 80,
+      value: '80,00',
       image: 'assets/images/gifts/hello_kitty.png'
     },
     {
       name: '3 meses de Netflix para o casal',
-      value: 150,
+      value: '150,00',
       image: 'assets/images/gifts/png-clipart-netflix-full-logo-tech-companies-thumbnail-removebg-preview.png'
     },
     {
       name: 'Poder escolher a playlist na casa dos noivos',
-      value: 400,
+      value: '400,00',
       image: 'assets/images/gifts/spotify.png'
     },
     {
       name: 'Maleta de poker para a noiva pegar mais dinheiro do noivo',
-      value: 800,
+      value: '800,00',
       image: 'assets/images/gifts/poker.png'
     },
     {
       name: 'Taxa da noiva não jogar o buquê para sua namorada',
-      value: 2500,
+      value: '2.500,00',
       image: 'assets/images/gifts/buque_oficial.png'
     },
     {
       name: 'Ser nosso convidado favorito',
-      value: 3000,
+      value: '3.000,00',
       image: 'assets/images/gifts/favorito.png'
     },
     {
@@ -199,21 +199,21 @@ export class GiftsComponent {
     {
       name: 'Rolo de macarrão',
       value: '44,99',
-      image: 'assets/images/gifts/rolo-macarrao.png'
+      image: 'assets/images/gifts/rolo.jpg'
     },
     {
       name: 'Capacete contra rolo de macarrão',
-      value: '119.90',
-      image: 'assets/images/gifts/capacete-corinthians.png'
+      value: '119,90',
+      image: 'assets/images/gifts/capacete-de-futebol-americano.jpg'
     },
     {
       name: 'Mais horas de festa',
-      value: '2500',
+      value: '2.500,00',
       image: 'assets/images/gifts/ajuda-extra.png'
     },
     {
       name: 'Jogos para o casal',
-      value: '399.99',
+      value: '399,99',
       image: 'assets/images/gifts/jogos-casal.png'
     }
   ];
